@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Donner List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" *ngFor="let item of result">
+    <!--    <img src="/assets/quran-majeed.jpg" alt="" />-->
+    <ion-card-header>
+      <ion-card-title>{{item?.user.first_name}}</ion-card-title>
+      <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p> {{item?.user.first_name}} {{item?.user.last_name}} locate in {{item?.address}}. {{item?.contact}} is
+        Contact number and email is {{item?.user.email}}. You can review them OR send feedback.</p>
+      <ion-label (click)="review(item)" slot="start" color="success">Review     </ion-label>
+      <ion-label (click)="feedBack(item)" position="end" color="primary">Feedback</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

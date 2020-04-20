@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerCharityHouseForm">
+    <ion-grid>
+      <ion-row color="justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
+            <h3>Enter Charity House Details</h3>
+          </div>
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input placeholder="Charity House's Name" formControlName="name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Number of members" formControlName="no_of_dependents"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Contact" formControlName="contact"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Type</ion-label>
+              <ion-select value="Donner" formControlName="type" placeholder="--Select--" okText="Okay" cancelText="Dismiss">
+                <ion-select-option value="Old House">Old House</ion-select-option>
+                <ion-select-option value="Orphan House">Orphan House</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Bank Name" formControlName="bank_name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Account Number" formControlName="account_no"></ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button size="large" [disabled]="registerCharityHouseForm.invalid" (click)="save()" color="primary" type="submit" expand="block">Proceed</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

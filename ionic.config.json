@@ -1,0 +1,7 @@
+{
+  "name": "assignment-2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

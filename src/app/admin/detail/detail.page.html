@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+<!--    <img src="/assets/quran-majeed.jpg" alt="" />-->
+    <ion-card-header>
+        <ion-card-title>{{user?.first_name}}</ion-card-title>
+        <ion-card-subtitle>{{user?.last_name}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p> Mr. {{user?.first_name}} {{user?.last_name}} is a {{user?.role}} User of this system.</p>
+      <p>Username of the user is {{user?.user_name}} and password is {{user?.password}} and email is {{user?.email}}.</p>
+        <ion-icon slot="end" name="ios-call" (click)="contactDealer(user?.email)"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
