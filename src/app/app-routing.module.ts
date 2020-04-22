@@ -107,7 +107,8 @@ const routes: Routes = [
     {
         path: 'feedback',
         loadChildren: './charityHouse/feedback/feedback.module#FeedbackPageModule'
-    }
+    },  { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' }
+
 ];
 
 @NgModule({

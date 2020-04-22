@@ -1,15 +1,16 @@
 <ion-app>
   <ion-split-pane>
     <ion-menu type="overlay">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
       <ion-content>
-        <ion-list>
+        <ion-header class="bar-profile">
+          <div class="profile">
+            <img class="profile-picture" src="assets/20181028_231840.png" />
+            <h3 class="name">Muzammal Hussain</h3>
+          </div>
+        </ion-header>
+        <ion-list class="test">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
