@@ -57,6 +57,8 @@ export class DonateFundPage implements OnInit {
   donateFund() {
     const test = this.donateForm.value;
     const dateFormat = test.card_expiry_date.split('T')[0];
+    // This id will comes from the service, because when user will login, his ID will save to service
+    // and retrieved at time of send data to server.
     this.finalFundObject = '{"amount": "' + test.amount + '",' +
       '"currency": "' + test.currency + '",' +
         '"donnerCard": "' + test.donner_card + '",' +
