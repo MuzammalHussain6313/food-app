@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DonnerListPage } from './donner-list.page';
-
+// import {ReviewComponent} from './review/review.component';
+import {ReviewComponent} from './review/review.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,8 +18,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
-  declarations: [DonnerListPage]
+  entryComponents: [ReviewComponent],
+  declarations: [DonnerListPage, ReviewComponent]
 })
 export class DonnerListPageModule {}
