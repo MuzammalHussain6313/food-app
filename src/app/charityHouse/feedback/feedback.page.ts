@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ListService} from '../../list.service';
+import {Observable} from 'rxjs';
+import {AlertController} from '@ionic/angular';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.page.html',
@@ -13,11 +15,15 @@ export class FeedbackPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient,
-              private formBuilder: FormBuilder) { }
-
+              private router: Router,
+              private alertController: AlertController,
+              private formBuilder: FormBuilder) {
+  }
+  donnerID; finalFeedbackObject;
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
-      console.log('data coming from donner list.', paramMap);
+      this.donnerID = paramMap.get('id');
+      console.log('data coming from donner list.', paramMap.get('id'));
     });
     this.formInitializer();
   }
@@ -30,5 +36,52 @@ export class FeedbackPage implements OnInit {
     });
   }
     sendFeedback() {
+      const test = this.feedbackForm.value;
+      this.finalFeedbackObject = '{"email": "' + test.email + '",' +
+          '"subject": "' + test.subject + '",' +
+          '"feedbackMessage": "' + test.feedback_message + '",' +
+          '"donner": { "id": ' + this.donnerID + '},' +
+          '"charityHouse": { "id": ' + 4 + '}' + '}';
+      console.log('full object', this.finalFeedbackObject);
+      const feedback = JSON.parse(this.finalFeedbackObject);
+      this.saveFeedback(feedback).subscribe(
+          data => {
+            console.log('I got this response -> ', data);
+            this.router.navigate(['donner-list']);
+          },
+          error => {
+            console.log('error', error);
+          }
+      );
     }
+  saveFeedback(dataObj): Observable<any> {
+    console.log('data recieved for put. ', dataObj);
+    const url = 'http://localhost:8095/feedbacks/newFeedback';
+    this.presentAlertConfirm();
+    return this.http.post(url, dataObj);
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 }
