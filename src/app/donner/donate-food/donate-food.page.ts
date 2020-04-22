@@ -54,6 +54,8 @@ export class DonateFoodPage implements OnInit {
     const dateFormat = test.expiry_date.split('T')[0];
     console.log('date after conversion', dateFormat);
     console.log('form data', test);
+    // This id will comes from the service, because when user will login, his ID will save to service
+    // and retrieved at time of send data to server.
     this.finalDonationObject = '{"quantityValue" : "' + test.quantity + '",' +
         '"quantityUnit" : "' + test.unit + '",' +
         '"foodItem": {' +
