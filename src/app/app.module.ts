@@ -11,6 +11,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import {AutosizeModule} from 'ngx-autosize';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,6 +26,7 @@ import {AutosizeModule} from 'ngx-autosize';
   providers: [
     StatusBar,
     SplashScreen,
+      LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

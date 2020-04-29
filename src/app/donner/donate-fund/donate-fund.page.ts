@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ListService} from '../../list.service';
 
 @Component({
   selector: 'app-donate-fund',
@@ -15,6 +16,7 @@ export class DonateFundPage implements OnInit {
   date;
   constructor(private route: ActivatedRoute,
               private http: HttpClient,
+              private service: ListService,
               private formBuilder: FormBuilder,
               private router: Router) {
   }
@@ -81,7 +83,7 @@ export class DonateFundPage implements OnInit {
   saveFoodDonation(dataObj): Observable<any> {
     // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
     console.log('data recieved for put. ', dataObj);
-    const url = 'http://localhost:8095/fundDonations/newFundDonation';
+    const url = `${this.service.homeUrl}/fundDonations/newFundDonation`;
     return this.http.post(url, dataObj);
   }
 }

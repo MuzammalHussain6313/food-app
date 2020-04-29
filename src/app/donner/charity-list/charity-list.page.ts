@@ -15,8 +15,13 @@ export class CharityListPage implements OnInit {
   charityList;
   constructor(public router: Router,
               private storage: Storage,
+              private service: ListService,
               public http: HttpClient) {
-    this.http.get('http://localhost:8095/charityHouses/list',
+  }
+  result: any = [];
+  data: Observable<any>;
+  ngOnInit() {
+    this.http.get(`${this.service.homeUrl}/charityHouses/list`,
         {observe: 'response'}).subscribe(response => {
       if (response.status === 200 || response.status === 201) {
         this.charityList = response.body;
@@ -41,10 +46,6 @@ export class CharityListPage implements OnInit {
       console.log('error', error);
     });
     console.log('result' + this.result);
-  }
-  result: any = [];
-  data: Observable<any>;
-  ngOnInit() {
     // this.data = this.http.get('http://localhost:8095/charityHouses/list');
     // // this.loading = false;
     // console.log('data', this.data);

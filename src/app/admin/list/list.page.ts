@@ -20,9 +20,22 @@ export class ListPage implements OnInit {
     constructor(public router: Router,
                 private storage: Storage,
                 public http: HttpClient,
+                private service: ListService,
                 public popoverController: PopoverController) {
-        this.http.get('http://localhost:8095/users/list',
-            {observe: 'response'}).subscribe(response => {
+    }
+    result: any = [];
+    data: Observable<any>;
+
+    loadData() {
+        this.storage.get('users').then((val) => {
+            this.result = val;
+            console.log('Your age is', val);
+        });
+    }
+
+    ngOnInit(): void {
+        const url = this.service.homeUrl + '/users/list';
+        this.http.get(url, {observe: 'response'}).subscribe(response => {
             if (response.status === 200 || response.status === 201) {
                 this.t = response.body;
                 console.log('data loading from API');
@@ -60,18 +73,6 @@ export class ListPage implements OnInit {
         // this.loadData();
         console.log('result' + this.result);
     }
-    result: any = [];
-    data: Observable<any>;
-
-    loadData() {
-        this.storage.get('users').then((val) => {
-            this.result = val;
-            console.log('Your age is', val);
-        });
-    }
-
-    ngOnInit(): void {
-    }
 
     addUser() {
         this.router.navigate(['addUser']);
@@ -98,5 +99,33 @@ export class ListPage implements OnInit {
             componentProps: {id: item.id}
         });
         return await popover.present();
+    }
+
+    updateItem(item: any) {
+        const id = item;
+        const url = `update/${id}`;
+        console.log(url);
+        this.router.navigateByUrl(url);
+    }
+
+    deleteProperty(item: any) {
+        console.log('id ' + item);
+        this.callAPI(item).subscribe(
+            data => {
+                console.log('I got this response -> ', data);
+                this.router.navigate(['list']);
+            },
+            error => {
+                console.log('error', error);
+            }
+        );
+        alert('deleted successfully');
+        this.router.navigate(['list']);
+    }
+    callAPI(student): Observable<any> {
+        // delete code added and working correctly.
+        const url = `${this.service.homeUrl}/users/deleteUser/${student.id}`;
+        console.log('link', url);
+        return this.http.delete(url);
     }
 }

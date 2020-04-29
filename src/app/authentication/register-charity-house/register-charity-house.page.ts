@@ -4,6 +4,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {isJsonObject} from '@angular-devkit/core';
+import {ListService} from '../../list.service';
 
 @Component({
   selector: 'app-register-charity-house',
@@ -18,9 +19,14 @@ export class RegisterCharityHousePage implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private http: HttpClient,
+              private service: ListService,
               private formBuilder: FormBuilder) {
   }
+  get registerFormControl() {
+    return this.registerCharityHouseForm.controls;
+  }
   data: Observable<any>;
+  submitted: any;
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       this.testData = paramMap;
@@ -43,7 +49,6 @@ export class RegisterCharityHousePage implements OnInit {
     });
     this.formInitializer();
   }
-
   formInitializer() {
     const EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     // this.date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1 ) + '-' + this.today.getDate();
@@ -55,11 +60,12 @@ export class RegisterCharityHousePage implements OnInit {
       contact: [null, [Validators.required, Validators.pattern('[0-9]*')]],
       type: [null, [Validators.required]],
       bank_name: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      account_no: [null, [Validators.required]]
+      account_no: [null, [Validators.required, Validators.pattern('[0-9]*')]]
     });
   }
   save() {
     if (this.registerCharityHouseForm.valid) {
+      this.submitted = true;
       console.log('formData', this.registerCharityHouseForm.value);
       const formData = this.registerCharityHouseForm.value;
       this.charityHouse = '{"name" : " ' + formData.name +
@@ -91,7 +97,7 @@ export class RegisterCharityHousePage implements OnInit {
   saveHttpReq(dataObj): Observable<any> {
     // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
     console.log(dataObj);
-    const url = 'http://localhost:8095/charityHouses/newCharityHouse';
+    const url = `${this.service.homeUrl}/charityHouses/newCharityHouse`;
     return this.http.post(url, dataObj);
   }
 }

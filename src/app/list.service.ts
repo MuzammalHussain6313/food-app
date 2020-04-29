@@ -16,6 +16,8 @@ export class ListService {
     constructor() {
     }
 
+    homeUrl = 'http://localhost:8095';
+    // homeUrl = 'https://food-distribution-app.herokuapp.com/';
     addUser(item: number) {
         this.user = item;
     }
@@ -40,7 +42,6 @@ export class ListService {
     getSUrahList() {
         return this.surahList;
     }
-
     addSurah(surahForm: any) {
         console.log('form data' + surahForm);
 

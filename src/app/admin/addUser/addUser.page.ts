@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {ListService} from '../../list.service';
 
 @Component({
   selector: 'app-addUser',
@@ -16,6 +17,7 @@ export class AddUserPage implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
+    private service: ListService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -59,7 +61,7 @@ export class AddUserPage implements OnInit {
   saveHttpReq(dataObj): Observable<any> {
     // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
     console.log(dataObj);
-    const url = 'http://localhost:8095/users/newUser';
+    const url = `${this.service.homeUrl}/users/newUser`;
     return this.http.post(url, dataObj);
   }
 }

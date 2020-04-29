@@ -18,12 +18,27 @@
           <div class="ion-padding">
             <ion-item>
               <ion-label position="floating">Address</ion-label>
-              <ion-input formControlName="address"></ion-input>
+              <ion-input (focusout)="onFoucusOut()" (keyup)="removeError()" formControlName="address"></ion-input>
             </ion-item>
+            <div>
+              <span class="text-danger" *ngIf="registerDonnerFormControl.address.touched && registerDonnerFormControl.address.errors?.required">Address required.</span>
+              <span class="text-danger" *ngIf="submitted && registerDonnerFormControl.address.errors?.required">address required.</span>
+            </div>
+            <div *ngIf="addressVerification">
+              <span class="text-danger">You can't enter only white space.</span>
+            </div>
             <ion-item>
               <ion-label position="floating">Contact</ion-label>
-              <ion-input formControlName="contact"></ion-input>
+              <ion-input (focus)="onFoucusOutContact()" (keyup)="removeErrorContact()" formControlName="contact"></ion-input>
             </ion-item>
+            <div>
+              <span class="text-danger" *ngIf="registerDonnerFormControl.contact.touched && registerDonnerFormControl.contact.errors?.required">Contact required.</span>
+              <span class="text-danger" *ngIf="submitted && registerDonnerFormControl.contact.errors?.required">Contact required.</span>
+              <span class="text-danger" *ngIf="registerDonnerForm.get('contact').hasError('pattern')">Enter Only digits for contact.</span>
+            </div>
+            <div *ngIf="contactEmptyCheck">
+              <span class="text-danger">You can't enter only white space.</span>
+            </div>
           </div>
           <div class="ion-padding">
             <ion-button size="large" [disabled]="registerDonnerForm.invalid" (click)="registerDonner()" color="primary" type="submit" expand="block">Register</ion-button>
