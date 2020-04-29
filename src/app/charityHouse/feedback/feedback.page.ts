@@ -16,6 +16,7 @@ export class FeedbackPage implements OnInit {
   constructor(private route: ActivatedRoute,
               private http: HttpClient,
               private router: Router,
+              private service: ListService,
               private alertController: AlertController,
               private formBuilder: FormBuilder) {
   }
@@ -56,7 +57,7 @@ export class FeedbackPage implements OnInit {
     }
   saveFeedback(dataObj): Observable<any> {
     console.log('data recieved for put. ', dataObj);
-    const url = 'http://localhost:8095/feedbacks/newFeedback';
+    const url = `${this.service.homeUrl}/feedbacks/newFeedback`;
     this.presentAlertConfirm();
     return this.http.post(url, dataObj);
   }

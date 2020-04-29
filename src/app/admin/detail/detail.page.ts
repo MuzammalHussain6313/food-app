@@ -13,7 +13,9 @@ import {Observable} from 'rxjs';
 export class DetailPage implements OnInit {
 
     constructor(private route: ActivatedRoute,
-                private http: HttpClient, private router: Router
+                private service: ListService,
+                private http: HttpClient,
+                private router: Router
     ) {
     }
 
@@ -22,18 +24,18 @@ export class DetailPage implements OnInit {
     user;
 
     ngOnInit() {
-
         this.route.paramMap.subscribe(paramMap => {
             const val = paramMap.get('id');
             // const test = JSON.parse(val);
             // console.log(val);
             // console.log('obj', test);
-            const url  = `http://localhost:8095/users/getUser/${1}`;
+            const url  = `${this.service.homeUrl}/users/getUser/${1}`;
             this.data =  this.http.get(url);
             console.log(this.data);
             this.data.subscribe(data => {
                 this.user = data;
                 console.log(this.user);
+
             });
             console.log(this.user);
             });
@@ -54,7 +56,7 @@ export class DetailPage implements OnInit {
     }
 
     callAPI(student): Observable<any> {
-        const url = `http://localhost:8095/users/deleteUser/${this.user.id}`;
+        const url = `${this.service.homeUrl}/users/deleteUser/${this.user.id}`;
         console.log('link', url);
         return this.http.delete(url);
     }
@@ -68,13 +70,5 @@ export class DetailPage implements OnInit {
 
     contactDealer(contactNumber: any) {
         alert('You can contactwith owner via ' + contactNumber + ' Number.');
-    }
-
-    donateFund() {
-
-    }
-
-    donateFood() {
-
     }
 }

@@ -89,7 +89,7 @@ export class DonateFoodPage implements OnInit {
   saveFoodDonation(dataObj): Observable<any> {
     // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
     console.log('data recieved for put. ', dataObj);
-    const url = 'http://localhost:8095/foodDonationDetails/newFoodDonationDetails';
+    const url = `${this.service.homeUrl}/foodDonationDetails/newFoodDonationDetails`;
     return this.http.post(url, dataObj);
   }
 }

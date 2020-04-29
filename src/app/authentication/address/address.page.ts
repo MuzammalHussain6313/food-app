@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {ListService} from '../../list.service';
 
 @Component({
     selector: 'app-address',
@@ -14,10 +15,11 @@ export class AddressPage implements OnInit {
     addressForm: FormGroup;
     charity;
     loading: boolean;
-
+    submitted: any;
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private http: HttpClient,
+                private service: ListService,
                 private formBuilder: FormBuilder
     ) {
     }
@@ -36,16 +38,21 @@ export class AddressPage implements OnInit {
     formInitializer() {
         this.addressForm = this.formBuilder.group({
             streetAddress: [null, [Validators.required]],
-            city: [null, [Validators.required]],
+            city: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
             zipCode: [null, [Validators.required, Validators.pattern('[0-9]*')]],
-            state: [null, [Validators.required, Validators.pattern('[0-9]*')]],
-            country: [null, [Validators.required]]
+            state: [null, [Validators.required, Validators.pattern('[a-zA-Z]*')]],
+            country: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]]
         });
     }
 
+    get registerAddressFormControl() {
+        return this.addressForm.controls;
+    }
+
     registerCharityHouse() {
+        this.submitted = true;
+        this.loading = true;
         if (this.addressForm.valid) {
-            this.loading = true;
             console.log('formData', this.addressForm.value);
             const formData = this.addressForm.value;
             this.charity = '' + this.obj + '"address" : {"streetAddress" : "' + formData.streetAddress +
@@ -60,6 +67,7 @@ export class AddressPage implements OnInit {
             this.saveHttpReq(completeCharityHouse).subscribe(
                 data => {
                     console.log('I got this response -> ', data);
+                    this.loading = false;
                     this.router.navigate(['login']);
                 },
                 error => {
@@ -67,11 +75,12 @@ export class AddressPage implements OnInit {
                 }
             );
         }
+        this.loading = false;
     }
 
     saveHttpReq(dataObj): Observable<any> {
         console.log('recieved data ', dataObj);
-        const url = 'http://localhost:8095/charityHouses/newCharityHouse';
+        const url = `${this.service.homeUrl}/charityHouses/newCharityHouse`;
         const test = this.http.post(url, dataObj);
         this.loading = false;
         return test;

@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ListService} from '../../list.service';
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',
@@ -80,7 +79,7 @@ export class LoginPage implements OnInit {
 
     saveHttpReq(dataObj): Observable<any> {
         console.log('recieved data ', dataObj);
-        const url = 'http://localhost:8095/users/login';
+        const url = `${this.service.homeUrl}/users/login`;
         const test = this.http.post(url, dataObj);
         return test;
     }

@@ -16,7 +16,7 @@
     <ion-card-content>
       <p> Mr. {{user?.first_name}} {{user?.last_name}} is a {{user?.role}} User of this system.</p>
       <p>Username of the user is {{user?.user_name}} and password is {{user?.password}} and email is {{user?.email}}.</p>
-        <ion-icon slot="end" name="ios-call" (click)="contactDealer(user?.email)"></ion-icon>
+        <ion-icon size="large" slot="end" name="ios-call" (click)="contactDealer(user?.email)"></ion-icon>
     </ion-card-content>
   </ion-card>
 </ion-content>

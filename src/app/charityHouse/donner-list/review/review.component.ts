@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {ListService} from '../../../list.service';
 
 @Component({
   selector: 'app-review',
@@ -16,6 +17,7 @@ export class ReviewComponent implements OnInit {
               private navParams: NavParams,
               private router: Router,
               private http: HttpClient,
+              private service: ListService,
               private formBuilder: FormBuilder) {
   }
   id; c1 = '';  c2 = '';  c3 = '';  c4 = '';  c5 = '';
@@ -114,7 +116,7 @@ export class ReviewComponent implements OnInit {
   }
   saveReview(dataObj): Observable<any> {
     console.log('data recieved for put. ', dataObj);
-    const url = 'http://localhost:8095/reviews/newReview';
+    const url = `${this.service.homeUrl}/reviews/newReview`;
     return this.http.post(url, dataObj);
   }
 }

@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {ListService} from '../../list.service';
 
 @Component({
   selector: 'app-update',
@@ -15,6 +16,7 @@ export class UpdatePage implements OnInit {
   constructor(private route: ActivatedRoute,
               private http: HttpClient,
               private router: Router,
+              private service: ListService,
               private formBuilder: FormBuilder) { }
   propertyList: any;
   user;
@@ -25,7 +27,7 @@ export class UpdatePage implements OnInit {
       this.route.paramMap.subscribe(paramMap => {
           const val = paramMap.get('id');
           console.log('id', val);
-          const url  = `http://localhost:8095/users/getUser/${val}`;
+          const url  = `${this.service.homeUrl}/users/getUser/${val}`;
           console.log('url', url);
           this.data =  this.http.get(url);
           console.log(this.data);
@@ -71,7 +73,7 @@ export class UpdatePage implements OnInit {
     }
 
     saveHttpReq(dataObj): Observable<any> {
-        const url = `http://localhost:8095/users/updateUser`;
+        const url = `${this.service.homeUrl}/users/updateUser`;
         console.log('link', url);
         return this.http.put(url, dataObj);
     }
