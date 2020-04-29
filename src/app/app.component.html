@@ -8,13 +8,18 @@
             <h3 class="name">Muzammal Hussain</h3>
           </div>
         </ion-header>
-        <ion-list class="test">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item *ngFor="let p of appPages" class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>
+            </ion-item>
+            <ion-item lines="none" class="logout">
+              <ion-button (click)="logOut()" size="default" shape="round" expand="full" color="danger">
+                Logout <ion-icon class="logout-icon" size="large" name="log-out"></ion-icon>
+              </ion-button>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
