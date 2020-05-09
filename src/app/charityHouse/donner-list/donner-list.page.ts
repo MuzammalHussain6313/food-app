@@ -34,12 +34,8 @@ export class DonnerListPage implements OnInit {
                 this.donnerList = response.body;
                 console.log('data loading from API');
                 this.result = this.donnerList.content;
-                // this.storage.clear();
-                this.storage.set('donners', this.result);
-                this.storage.get('donners').then((val) => {
-                    // this.result = val;
-                    console.log('Your data saved in database is', val);
-                });
+                localStorage.removeItem('donners');
+                localStorage.setItem('donners', JSON.stringify(this.result));
                 console.log('donnerList : ', this.donnerList.content);
             }
             // You can access status:
@@ -63,10 +59,11 @@ export class DonnerListPage implements OnInit {
     }
 
     loadData() {
-        this.storage.get('donners').then((val) => {
-            this.result = val;
-            console.log('Your data is', val);
-        });
+        this.result = JSON.parse(localStorage.getItem('donners'));
+        // this.storage.get('donners').then((val) => {
+        //     this.result = val;
+        //     console.log('Your data is', val);
+        // });
     }
 
     async review(myEvent, item: any) {
