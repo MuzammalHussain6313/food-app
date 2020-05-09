@@ -68,6 +68,7 @@ export class AddressPage implements OnInit {
                 data => {
                     console.log('I got this response -> ', data);
                     this.loading = false;
+                    alert('Please! check your email and verify your account.');
                     this.router.navigate(['login']);
                 },
                 error => {
