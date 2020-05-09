@@ -4,7 +4,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -108,7 +108,9 @@ const routes: Routes = [
         path: 'feedback',
         loadChildren: './charityHouse/feedback/feedback.module#FeedbackPageModule'
     },
-  { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },  { path: 'profile-picture', loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule' }
+  { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },
+  { path: 'profile-picture', loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule' },  { path: 'forgot-password', loadChildren: './authentication/forgot-password/forgot-password.module#ForgotPasswordPageModule' }
+
 
 
 ];

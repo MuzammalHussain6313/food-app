@@ -3,9 +3,14 @@
     <ion-menu type="overlay">
       <ion-content>
         <ion-header class="bar-profile">
-          <div class="profile">
-            <img class="profile-picture" src="assets/20181028_231840.png" />
-            <h3 class="name">Muzammal Hussain</h3>
+          <div *ngIf="user" class="profile">
+            <img class="profile-picture" src="assets/20181028_231840.png"/>
+            <h3 class="name">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>
+            <h3 class="name">{{user?.first_name}} {{user?.last_name}}</h3>
+          </div>
+          <div *ngIf="!user" class="profile">
+            <img class="profile-picture" src="assets/person-circle-outline.png"/>
+            <h3 class="name">Your Name</h3>
           </div>
         </ion-header>
         <ion-list>
