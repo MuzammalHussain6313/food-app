@@ -27,12 +27,8 @@ export class CharityListPage implements OnInit {
         this.charityList = response.body;
         console.log('data loading from API');
         this.result = this.charityList.content;
-        // this.storage.clear();
-        this.storage.set('charityHouses', this.result);
-        this.storage.get('charityHouses').then((val) => {
-          this.result = val;
-          console.log('Your charity houses list saved in database is', val);
-        });
+        localStorage.removeItem('charityHouses');
+        localStorage.setItem('charityHouses', JSON.stringify(this.result));
         console.log('charityList : ', this.charityList.content);
       }
       // You can access status:
@@ -57,10 +53,10 @@ export class CharityListPage implements OnInit {
   }
 
   loadData() {
-    this.storage.get('charityHouses').then((val) => {
-      this.result = val;
-      console.log('Your charity houses list is', val);
-    });
+    this.result = JSON.parse(localStorage.getItem('charityHouses'));
+    // this.storage.get('charityHouses').then((val) => {
+    //   console.log('Your charity houses list is', this.result);
+    // });
   }
   donateFund(item) {
     this.router.navigate(['donate-fund', item]);
