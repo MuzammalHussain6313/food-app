@@ -68,6 +68,7 @@ export class RegisterDonnerPage implements OnInit {
       console.log('complete charity house', completeDonner);
       this.saveHttpReq(completeDonner).subscribe(
           data => {
+            alert('Please! check your email and verify your account.');
             console.log('I got this response -> ', data);
             this.router.navigate(['login']);
           },
