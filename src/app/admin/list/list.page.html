@@ -16,7 +16,7 @@
     <ion-list no-lines>
         <ion-item *ngFor="let item of result" detail-push>
             <ion-icon slot="start" name="person"></ion-icon>
-            <p (click)="showSingleItem(item)">{{item.first_name}} {{item.last_name}}</p>
+            <p (click)="showSingleItem(item)">{{item?.first_name}} {{item?.last_name}}</p>
             <ion-img (click)="updateItem(item?.id)" style="width: 20px; height: 20px;" src="/assets/pencil-sharp.svg" alt="update" slot="end"></ion-img>
             <ion-icon (click)="deleteProperty(item?.id)" size="default" name="trash" slot="end"></ion-icon>
         </ion-item>

@@ -27,10 +27,7 @@ export class ListPage implements OnInit {
     data: Observable<any>;
 
     loadData() {
-        this.storage.get('users').then((val) => {
-            this.result = val;
-            console.log('Your age is', val);
-        });
+        this.result = JSON.parse(localStorage.getItem('users'));
     }
 
     ngOnInit(): void {
@@ -40,9 +37,9 @@ export class ListPage implements OnInit {
                 this.t = response.body;
                 console.log('data loading from API');
                 this.result = this.t.content;
-                this.storage.clear();
-                this.storage.set('users', this.result);
-                console.log('t : ', this.t.content);
+                localStorage.removeItem('users');
+                localStorage.setItem('users', JSON.stringify(this.t.content));
+                console.log('data : ', this.t.content);
             }
             // You can access status:
             console.log('status code', response.status);
