@@ -67,8 +67,8 @@ Features in our Application.
 
 
 <p>Admin Manage User.</p><br>
-<img src="screen-shorts/adminUser.PNG" width="400" height="700"><br/>
+<img src="screen-shorts/adminUsers.PNG" width="400" height="700"><br/>
 
 
 <p>Menu.</p><br>
-<img src="screen-shorts/aminMenu.PNG" width="400" height="700"><br/>
+<img src="screen-shorts/adminMenu.PNG" width="400" height="700"><br/>
