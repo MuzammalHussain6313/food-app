@@ -2,35 +2,32 @@
 <h3>Frontend Work</h3>
 Tools and technologies <br/>
 •	Hybrid Application, where Ionic framework and angular used for front-end.<br/>
-•	Firebase/mongo dB database and node.js will be used for backed work. 
+•	mySQL database and Spring Boot will be used for backed work. 
+•	remoteMySQL used while project is deployed to heroku server. 
 
 Features in our Application.
-1.	Customer’s registration <br/>
-•	Customer will be able to create new account.<br/>
+1.	User House <br/>
+•	There are 3 users of system, admin, donner (food OR fund) and charity house.
+•	Charity House will be able to create new account.<br/>
 •	Sign in and forgot password options will also be provided.<br/>
 
-2.	Dealer registration <br/>
-•	New can will be able to the application. <br/>
-•	Sign in and forgot password options will also be provided. <br/>
+2.	Charity house Dashboard <br/>
+•	Charity house will be able to view list of donners with details. <br/>
+•	After viewing the different donners, charoty house will be able to contact with the donner via a chat.
 
-3.	Admin registration <br/>
-•	There is functionality to add new administration to the system.<br/>
-•	Sign in and forgot password options will also be provided. <br/>
-
-4.	Customers Dashboard <br/>
-•	Customer will be able to view list of property with details. <br/>
-•	After viewing the different properties, Customer will be able to contact with the property dealer and can fix the rate etc.
-
-5.	Admin Dashboard <br/>
+3.	Admin Dashboard <br/>
 •	Admin will able to manage (CRUD) the records of users. <br/>
-•	Users will able to contact with admin.
+•	Admin will able to view reports of food. <br/>
+•	Users will able to contact with admin for help.
 
-6.	Dealer Dashboard <br/>
-•	Dealer will able Add new property for sale. <br/>
-•	Dealer will able to remove the soled property. <br/>
-•	Dealer can update information of the property if there is an error while entering the data.
+4.	donner Dashboard <br/>
+•	donner will able Add new suplus food if available. <br/>
+•	Syatem wil send notification to charity house.<br/>
+•	donner will able to view feed backs an review from charity house <br/>
+•	donner can manage his profile.
 
-<h3>For backend work please follow the link <a href = "https://github.com/MuzammalHussain6313/firstnodejsapp">https://github.com/MuzammalHussain6313/firstnodejsapp</a></h3>
+<h3>For backend work please follow the link <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
+
 <h4>Screen shorts.</h4>
 
 <p>Menu.</p><br>
