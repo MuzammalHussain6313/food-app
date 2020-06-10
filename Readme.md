@@ -49,7 +49,26 @@ Features in our Application.
 
 <h3>For backend work please follow the link<br/> <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
 
-<h4>Screen shorts.</h4>
+<h4>Have a look Some Screen shorts.</h4>
+
+<p>Login.</p><br>
+<img src="screen-shorts/login.PNG" width="400" height="700"><br/>
+
+<p>register.</p><br>
+<img src="screen-shorts/register.PNG" width="400" height="700"><br/>
+
+
+<p>Donner List.</p><br>
+<img src="screen-shorts/donnerList.PNG" width="400" height="700"><br/>
+
+
+<p>Charity Houses.</p><br>
+<img src="screen-shorts/charityHouse.PNG" width="400" height="700"><br/>
+
+
+<p>Admin Manage User.</p><br>
+<img src="screen-shorts/adminUser.PNG" width="400" height="700"><br/>
+
 
 <p>Menu.</p><br>
-<img src="screen-shorts/Mennue.PNG" width="400" height="700">
+<img src="screen-shorts/aminMenu.PNG" width="400" height="700"><br/>
