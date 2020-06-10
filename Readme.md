@@ -1,7 +1,8 @@
-# A property deade application with have following.
+# My Final year project is a Charity application with have following.
 <h3>Frontend Work</h3>
 Tools and technologies <br/>
 •	Hybrid Application, where Ionic framework and angular used for front-end.<br/>
+<h3>Backend Work</h3><br>
 •	mySQL database and Spring Boot will be used for backed work. 
 •	remoteMySQL used while project is deployed to heroku server. 
 
@@ -14,6 +15,8 @@ Features in our Application.
 2.	Charity house Dashboard <br/>
 •	Charity house will be able to view list of donners with details. <br/>
 •	After viewing the different donners, charoty house will be able to contact with the donner via a chat.
+•	Charity house can review and can give feedback to donners. <br/>
+•	charity house will able to manage his rofile. <br/>
 
 3.	Admin Dashboard <br/>
 •	Admin will able to manage (CRUD) the records of users. <br/>
@@ -26,28 +29,27 @@ Features in our Application.
 •	donner will able to view feed backs an review from charity house <br/>
 •	donner can manage his profile.
 
+5.	Email varification <br/>
+•	when register a new user system will send verification email to user. <br/>
+•	User will not allowd to login the system while he doesnot varify the email address.<br/>
+
+6. Local storage.
+•	When user is offline, there is local storage for recently loaded visit for both charity house and food provider. 
+•	When they online user will able to see new notifications and view new food provider. 
+
+7. Donation. 
+o	Users will be able to donate their funds through the master, visa cards. 
+o	There will be used APIs (like PayPal) to test while have user money in his/her card to donate? Is Card valid or not? Card is not expired. 
+o	System will also check while user have credit in his/her card?
+
+8. Application Programmable Interface.
+o	System have an API for developers to provide them data about the Food Companies, their reviews, location and their foods etc.
+o	Provide an API to provide data of charity houses, location, services and types of charity houses.
+
+
 <h3>For backend work please follow the link <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
 
 <h4>Screen shorts.</h4>
 
 <p>Menu.</p><br>
-<img src="screen-shorts/Menue.PNG" width="400" height="700">
-<hr>
-<p>Home.</p><br>
-<img src="screen-shorts/Home.PNG" width="400" height="700">
-<hr>
-<p>List of Property.</p><br>
-<img src="screen-shorts/List.PNG" width="400" height="700">
-<hr>
-<p>Update Item</p><br>
-<img src="screen-shorts/update.PNG" width="400" height="700">
-<hr>
-<p>details</p><br>
-<img src="screen-shorts/details.PNG" width="400" height="700">
-<hr>
-<p>Add new Item</p><br>
-<img src="screen-shorts/Add.PNG" width="400" height="700">
-<hr>
-<p>Delete popover.</p><br>
-<img src="screen-shorts/update-delete.PNG" width="400" height="700">
-
+<img src="screen-shorts/Mennue.PNG" width="400" height="700">
