@@ -1,4 +1,4 @@
-# My Final year project is a Charity application with have following.
+# My Final year project is a Charity application with following.
 <h3>Frontend Work</h3>
 Tools and technologies <br/>
 •	Hybrid Application, where Ionic framework and angular used for front-end.<br/>
@@ -33,21 +33,21 @@ Features in our Application.
 •	when register a new user system will send verification email to user. <br/>
 •	User will not allowd to login the system while he doesnot varify the email address.<br/>
 
-6. Local storage.
-•	When user is offline, there is local storage for recently loaded visit for both charity house and food provider. 
-•	When they online user will able to see new notifications and view new food provider. 
+6. Local storage.<br>
+•	When user is offline, there is local storage for recently loaded visit for both charity house and food provider. <br/>
+•	When they online user will able to see new notifications and view new food provider. <br/>
 
-7. Donation. 
-o	Users will be able to donate their funds through the master, visa cards. 
-o	There will be used APIs (like PayPal) to test while have user money in his/her card to donate? Is Card valid or not? Card is not expired. 
-o	System will also check while user have credit in his/her card?
+7. Donation. <br>
+•	Users will be able to donate their funds through the master, visa cards. <br/>
+•	There will be used APIs (like PayPal) to test while have user money in his/her card to donate? Is Card valid or not? Card is not expired. <br/>
+•	System will also check while user have credit in his/her card?<br/>
 
-8. Application Programmable Interface.
-o	System have an API for developers to provide them data about the Food Companies, their reviews, location and their foods etc.
-o	Provide an API to provide data of charity houses, location, services and types of charity houses.
+8. Application Programmable Interface.<br/>
+•	System have an API for developers to provide them data about the Food Companies, their reviews, location and their foods etc.<br/>
+•	Provide an API to provide data of charity houses, location, services and types of charity houses.<br/>
 
 
-<h3>For backend work please follow the link <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
+<h3>For backend work please follow the link<br/> <a href = "https://github.com/MuzammalHussain6313/Food-Distribution-App">https://github.com/MuzammalHussain6313/Food-Distribution-App</a></h3>
 
 <h4>Screen shorts.</h4>
 
