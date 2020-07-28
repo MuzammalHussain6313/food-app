@@ -5,8 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
-import {ReviewComponent} from '../../charityHouse/donner-list/review/review.component';
-import {PopoverComponent} from '../popover/popover.component';
 
 @NgModule({
   imports: [
@@ -20,7 +18,7 @@ import {PopoverComponent} from '../popover/popover.component';
       }
     ])
   ],
-  entryComponents: [PopoverComponent],
-  declarations: [ListPage, PopoverComponent]
+  entryComponents: [],
+  declarations: [ListPage]
 })
 export class ListPageModule {}

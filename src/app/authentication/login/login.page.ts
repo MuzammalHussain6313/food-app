@@ -37,8 +37,7 @@ export class LoginPage implements OnInit {
     formInitializer() {
         this.loginForm = this.formBuilder.group({
             email: [null, [Validators.required]],
-            password: [null, [Validators.required]],
-            role: [null, [Validators.required]]
+            password: [null, [Validators.required]]
         });
     }
 
@@ -53,43 +52,43 @@ export class LoginPage implements OnInit {
                     if (d.emailStatus && d.loginStatus && d.applicationStatus === 'approved' && d.role != null) {
                         if (d.role === 'donner') {
                             this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
-                                { title: 'charity Houses', url: '/charityList', icon: 'list', },
-                                { title: 'Setting', url: '/setting', icon: 'settings'}];
-                            this.service.setRole(loginData.role);
+                                { title: 'charity Houses', url: '/charityList', icon: 'list' },
+                                { title: 'Reports', url: `/reports/${d.donner.id}`, icon: 'list' },
+                                { title: 'Settings', url: '/setting', icon: 'settings'},
+                                { title: 'Feedbacks', url: '/feed-backs', icon: 'list' }];
+                            this.service.setRole(d.role);
                             console.log('donner coming from API', d.donner);
-                            localStorage.setItem('donner', JSON.stringify(d.donner));
+                            localStorage.setItem('user', JSON.stringify(d.donner));
                             localStorage.setItem('appPages', JSON.stringify(this.appPages));
-                            localStorage.setItem('role', loginData.role); // store role in local storage
-                            this.service.changeMessage({role: loginData.role});
+                            localStorage.setItem('role', d.role); // store role in local storage
+                            this.service.changeMessage({role: d.role});
                             this.router.navigate(['home']);
                         }
                         if (d.role === 'charity house') {
                             this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                                 { title: 'Donner List', url: '/donner-list', icon: 'list', },
-                                { title: 'Setting', url: '/setting', icon: 'settings'}];
-                            this.service.setRole(loginData.role);
+                                { title: 'Setting', url: '/setting', icon: 'settings'},
+                                ];
+                            this.service.setRole(d.role);
                             localStorage.setItem('appPages', JSON.stringify(this.appPages));
-                            localStorage.setItem('charity house', JSON.stringify(d.charityHouse));
-                            localStorage.setItem('role', loginData.role); // store role in local storage
-                            this.service.changeMessage({role: loginData.role});
+                            localStorage.setItem('user', JSON.stringify(d.charityHouse));
+                            localStorage.setItem('role', d.role); // store role in local storage
+                            this.service.changeMessage({role: d.role});
                             this.router.navigate(['home']);
                         }
                         if (d.role === 'admin') {
                             this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
-                                { title: 'Users', url: '/list', icon: 'list', },
-                                { title: 'Setting', url: '/setting', icon: 'settings'}];
-                            this.service.setRole(loginData.role);
-                            localStorage.setItem('adminUser', JSON.stringify(d.user));
+                                { title: 'Manage Users', url: '/tabs', icon: 'list', },
+                                { title: 'Profile', url: `/admin-profile/${d.user.id}`, icon: 'person'}];
+                            console.log('user', d.role);
+                            this.service.setRole(d.role);
+                            localStorage.setItem('user', JSON.stringify(d.user));
                             localStorage.setItem('appPages', JSON.stringify(this.appPages));
-                            localStorage.setItem('role', loginData.role); // store role in local storage
-                            this.service.changeMessage({role: loginData.role});
+                            localStorage.setItem('role', d.role); // store role in local storage
+                            this.service.changeMessage({role: d.role});
                             this.router.navigate(['home']);
                         }
-                        // this.service.addUser(d.userID);
-                        // this.router.navigate(['home']);
-                    } else if (d.emailStatus && d.loginStatus && d.applicationStatus === 'approved' && d.role === null) {
-                        alert('Please select correct role.');
-                    } else if (d.emailStatus && d.loginStatus && d.applicationStatus === null && d.role === loginData.role) {
+                    } else if (d.emailStatus && d.loginStatus && d.applicationStatus === null) {
                         alert('Your email and password is correct but Application status is disapproved. ' +
                             'Now you hve to check confirmation Email and approve your application status. Thank you!');
                     } else if (d.emailStatus || d.loginStatus) {
@@ -100,7 +99,7 @@ export class LoginPage implements OnInit {
                     // this.router.navigate(['home']);
                 },
                 error => {
-                    alert(':( OOPS ! Server Error.');
+                    alert(':( OOPS ! Server Error. Confirm your internet connection.');
                     console.log('error', error);
                 }
             );
@@ -144,5 +143,9 @@ export class LoginPage implements OnInit {
 
     registerUser() {
         this.router.navigate(['register']);
+    }
+
+    forgotPassword() {
+        this.router.navigate(['forgot-password']);
     }
 }

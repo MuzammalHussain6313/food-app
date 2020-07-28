@@ -5,7 +5,6 @@ import {NavController} from '@ionic/angular';
 import {HttpClient, HttpResponse, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PopoverController} from '@ionic/angular';
-import {PopoverComponent} from '../popover/popover.component';
 import {Storage} from '@ionic/storage';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/catch';
@@ -25,6 +24,8 @@ export class ListPage implements OnInit {
     }
     result: any = [];
     data: Observable<any>;
+    donnerActive: any;
+    charityHouseActive = true;
 
     loadData() {
         this.result = JSON.parse(localStorage.getItem('users'));
@@ -90,14 +91,6 @@ export class ListPage implements OnInit {
         this.router.navigateByUrl(url);
     }
 
-    async presentPopover(myEvent, item: any) {
-        const popover = await this.popoverController.create({
-            component: PopoverComponent,
-            componentProps: {id: item.id}
-        });
-        return await popover.present();
-    }
-
     updateItem(item: any) {
         const id = item;
         const url = `update/${id}`;
@@ -121,8 +114,19 @@ export class ListPage implements OnInit {
     }
     callAPI(student): Observable<any> {
         // delete code added and working correctly.
-        const url = `${this.service.homeUrl}/users/deleteUser/${student.id}`;
+        console.log('data received.', student);
+        const url = `${this.service.homeUrl}/users/deleteUser/${student}`;
         console.log('link', url);
         return this.http.delete(url);
+    }
+
+    activateDonner() {
+        this.donnerActive = true;
+        this.charityHouseActive = false;
+    }
+
+    activateCharityHouse() {
+        this.donnerActive = false;
+        this.charityHouseActive = true;
     }
 }

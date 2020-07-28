@@ -12,6 +12,19 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
     },
     {
+        path: 'detail',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./admin/detail/detail.module').then(m => m.DetailPageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./admin/detail/detail.module').then(m => m.DetailPageModule)
+            }
+        ]
+    },
+    {
         path: 'list',
         children: [
             {
@@ -78,7 +91,6 @@ const routes: Routes = [
         path: 'register',
         loadChildren: './authentication/register/register.module#RegisterPageModule'
     },
-    // tslint:disable-next-line:max-line-length
     {
         path: 'register-charity-house',
         children: [
@@ -108,9 +120,108 @@ const routes: Routes = [
         path: 'feedback',
         loadChildren: './charityHouse/feedback/feedback.module#FeedbackPageModule'
     },
-  { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },
-  { path: 'profile-picture', loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule' },  { path: 'forgot-password', loadChildren: './authentication/forgot-password/forgot-password.module#ForgotPasswordPageModule' }
-
+    {
+        path: 'chat',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./chat/chat.module').then(m => m.ChatPageModule)
+            },
+            {
+                path: ':donnerName',
+                loadChildren: () => import('./chat/chat.module').then(m => m.ChatPageModule)
+            }
+        ]
+    },
+    {
+        path: 'profile-picture',
+        loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule'
+    },
+    {
+        path: 'forgot-password',
+        loadChildren: './authentication/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+    },
+    // { path: 'donners', loadChildren: './admin/donners/donners.module#DonnersPageModule' },
+    // { path: 'charity-houses', loadChildren: './admin/charity-houses/charity-houses.module#CharityHousesPageModule' }
+    {
+        path: 'tabs',
+        loadChildren: './admin/tabs/tabs.module#TabsPageModule'
+    },
+    {
+        path: 'show-single-charity-house',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./admin/show-single-charity-house/show-single-charity-house.module')
+                    .then(m => m.ShowSingleCharityHousePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./admin/show-single-charity-house/show-single-charity-house.module')
+                    .then(m => m.ShowSingleCharityHousePageModule)
+            }
+        ]
+    },
+    {
+        path: 'update-charity-house',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./admin/update-charity-house/update-charity-house.module')
+                    .then(m => m.UpdateCharityHousePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => import('./admin/update-charity-house/update-charity-house.module')
+                    .then(m => m.UpdateCharityHousePageModule)
+            }
+        ]
+    },
+  { path: 'send-report', loadChildren: './charityHouse/send-report/send-report.module#SendReportPageModule' },
+  {
+      path: 'reports',
+      children: [
+          {
+              path: '',
+              loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
+          },
+          {
+              path: ':id',
+              loadChildren: () => import('./donner/reports/reports.module').then(m => m.ReportsPageModule)
+          }
+      ]
+  },
+  // { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' },
+  { path: 'feed-backs', loadChildren: './donner/feed-backs/feed-backs.module#FeedBacksPageModule' },
+  {
+      path: 'profile',
+      children: [
+          {
+              path: '',
+              loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
+          },
+          {
+              path: ':id',
+              loadChildren: () => import('./shared/profile/profile.module').then(m => m.ProfilePageModule)
+          }
+      ]
+  },
+  { path: 'help', loadChildren: './shared/help/help.module#HelpPageModule' },
+  { path: 'change-password', loadChildren: './shared/change-password/change-password.module#ChangePasswordPageModule' },
+  {
+      path: 'admin-profile',
+      children: [
+          {
+              path: '',
+              loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+          },
+          {
+              path: ':id',
+              loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+          }
+      ]
+  },  { path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule' },
+  { path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule' }
 
 
 ];

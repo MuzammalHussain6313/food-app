@@ -11,7 +11,20 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import {AutosizeModule} from 'ngx-autosize';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { FCM } from '@ionic-native/fcm/ngx';
+// import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+const firebaseConfig = {
+    apiKey: 'AIzaSyCkF4ALd5GXXPrtq5Xt496r0BW0Kb5Vpek',
+    authDomain: 'chat-app-in-ionic.firebaseapp.com',
+    databaseURL: 'https://chat-app-in-ionic.firebaseio.com',
+    projectId: 'chat-app-in-ionic',
+    storageBucket: 'chat-app-in-ionic.appspot.com',
+    messagingSenderId: '1089372479322',
+    appId: '1:1089372479322:web:4fcee22f158c2c8cfe9d63',
+    measurementId: 'G-5ZMBVRH11V'
+};
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,11 +35,13 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
         IonicStorageModule.forRoot(),
         AppRoutingModule,
         AutosizeModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule
     ],
   providers: [
-    StatusBar,
+    StatusBar, FCM,
     SplashScreen,
-      LocalNotifications,
+      // LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

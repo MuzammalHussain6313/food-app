@@ -26,49 +26,23 @@ export class DetailPage implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
             const val = paramMap.get('id');
-            // const test = JSON.parse(val);
-            // console.log(val);
-            // console.log('obj', test);
-            const url  = `${this.service.homeUrl}/users/getUser/${1}`;
+            const url  = `${this.service.homeUrl}/donners/findById/${val}`;
             this.data =  this.http.get(url);
             console.log(this.data);
             this.data.subscribe(data => {
                 this.user = data;
                 console.log(this.user);
-
             });
             console.log(this.user);
             });
     }
 
-    deleteStudent() {
-        console.log('formData ' + this.user.id);
-        this.callAPI(this.user).subscribe(
-            data => {
-                console.log('I got this response -> ', data);
-                this.router.navigate(['list']);
-            },
-            error => {
-                console.log('error', error);
-            }
-        );
-        this.router.navigate(['list']);
+    contactDonner(contactNumber: any) {
+        alert('You can contact with owner via ' + contactNumber + ' Number.');
     }
 
-    callAPI(student): Observable<any> {
-        const url = `${this.service.homeUrl}/users/deleteUser/${this.user.id}`;
-        console.log('link', url);
-        return this.http.delete(url);
-    }
-
-    updateItem() {
-        const id = this.user.id;
-        const url = `update/${id}`;
-        console.log(url);
+    loadReports(id: any) {
+        const url = `reports/${id}`;
         this.router.navigateByUrl(url);
-    }
-
-    contactDealer(contactNumber: any) {
-        alert('You can contactwith owner via ' + contactNumber + ' Number.');
     }
 }

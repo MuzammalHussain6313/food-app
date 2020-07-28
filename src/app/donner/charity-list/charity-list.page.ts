@@ -42,26 +42,13 @@ export class CharityListPage implements OnInit {
       console.log('error', error);
     });
     console.log('result' + this.result);
-    // this.data = this.http.get('http://localhost:8095/charityHouses/list');
-    // // this.loading = false;
-    // console.log('data', this.data);
-    // this.data.subscribe(data => {
-    //   this.result = data.content;
-    // });
-    // this.loading = false;
-    // console.log('result' + this.result);
   }
 
   loadData() {
     this.result = JSON.parse(localStorage.getItem('charityHouses'));
-    // this.storage.get('charityHouses').then((val) => {
-    //   console.log('Your charity houses list is', this.result);
-    // });
   }
   donateFund(item) {
     this.router.navigate(['donate-fund', item]);
-    // const url = `charityList/${item.id}`;
-    // this.router.navigateByUrl(url);
   }
 
   donateFood(item) {

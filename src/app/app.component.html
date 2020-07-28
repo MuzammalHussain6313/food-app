@@ -1,32 +1,34 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu type="overlay">
+    <ion-menu *ngIf="user" type="overlay">
       <ion-content>
-        <ion-header class="bar-profile">
-          <div *ngIf="user" class="profile">
-            <img class="profile-picture" src="assets/20181028_231840.png"/>
-            <h3 class="name">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>
-            <h3 class="name">{{user?.first_name}} {{user?.last_name}}</h3>
-          </div>
-          <div *ngIf="!user" class="profile">
-            <img class="profile-picture" src="assets/person-circle-outline.png"/>
-            <h3 class="name">Your Name</h3>
-          </div>
-        </ion-header>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-header class="bar-profile">
+            <div *ngIf="user" class="profile">
+              <img [routerLink]="['profile-picture']" class="profile-picture" src="assets/20181028_231840.png"/>
+              <h3 class="name">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>
+              <h3 class="name">{{user?.first_name}} {{user?.last_name}}</h3>
+            </div>
+            <div *ngIf="!user" class="profile">
+              <img class="profile-picture" src="assets/person-circle-outline.png"/>
+              <h3 class="name">Your Name</h3>
+            </div>
+          </ion-header>
+          <ion-item *ngFor="let p of appPages" class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none" class="logout">
+            <ion-button (click)="logOut()" size="default" shape="round" expand="full" color="danger">
+              Logout <ion-icon class="logout-icon" size="large" name="log-out"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-list>
-          <ion-menu-toggle auto-hide="false">
-            <ion-item *ngFor="let p of appPages" class="test" [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-            <ion-item lines="none" class="logout">
-              <ion-button (click)="logOut()" size="default" shape="round" expand="full" color="danger">
-                Logout <ion-icon class="logout-icon" size="large" name="log-out"></ion-icon>
-              </ion-button>
-            </ion-item>
-          </ion-menu-toggle>
+
         </ion-list>
       </ion-content>
     </ion-menu>

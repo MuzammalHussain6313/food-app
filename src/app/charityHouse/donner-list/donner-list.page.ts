@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PopoverController} from '@ionic/angular';
-import {PopoverComponent} from '../../admin/popover/popover.component';
 import {ReviewComponent} from './review/review.component';
 import {Storage} from '@ionic/storage';
 import {ListService} from '../../list.service';
@@ -83,7 +82,12 @@ export class DonnerListPage implements OnInit {
 
     }
 
-    openChat(item: any) {
-        this.router.navigate(['chat']);
+    openChat(first: any, last: any) {
+        const donnerName = first + ' ' + last;
+        this.router.navigate(['chat', donnerName]);
+    }
+
+    sendReport(item: any) {
+        this.router.navigate(['send-report', item]);
     }
 }

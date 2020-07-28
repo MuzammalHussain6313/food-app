@@ -51,7 +51,6 @@ export class AppComponent implements OnInit {
     // ];
     role: any;
     user: any;
-
     constructor(
         private platform: Platform,
         private router: Router,
@@ -74,11 +73,7 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.service.currentMessage.subscribe(data => {
             console.log('role coming', data);
-            if (data === false) {
-                this.role = localStorage.getItem('role');
-                console.log('role', this.role);
-                this.loadUserAndPages(this.role);
-            } else if (data) {
+            if (data) {
                 this.role = data;
                 this.role = this.role.role;
                 console.log('test', this.role);
@@ -89,22 +84,29 @@ export class AppComponent implements OnInit {
 
     loadUserAndPages(role: any) {
         this.appPages = JSON.parse(localStorage.getItem('appPages'));
-        if (role === 'admin') {
-            this.user = JSON.parse(localStorage.getItem('adminUser'));
-            console.log('admin', this.user);
-        } else if (role === 'donner') {
-            this.user = JSON.parse(localStorage.getItem('donner'));
-            console.log('donner', this.user);
-        } else if (role === 'charity house') {
-            this.user = JSON.parse(localStorage.getItem('charity house'));
-            console.log('charity house', this.user);
-        }
+        this.user = JSON.parse(localStorage.getItem('user'));
+        console.log('user', this.user);
+        // if (role === 'admin') {
+        //     this.user = JSON.parse(localStorage.getItem('adminUser'));
+        //     console.log('admin', this.user);
+        // } else if (role === 'donner') {
+        //     this.user = JSON.parse(localStorage.getItem('donner'));
+        //     console.log('donner', this.user);
+        // } else if (role === 'charity house') {
+        //     this.user = JSON.parse(localStorage.getItem('charity house'));
+        //     console.log('charity house', this.user);
+        // }
     }
+
     logOut() {
         alert('Are you sure to logout application.');
         localStorage.removeItem('role');
         localStorage.removeItem('appPages');
+        localStorage.removeItem('user');
         this.router.navigate(['']);
     }
-}
 
+    addProfilePicture() {
+        this.router.navigate(['profile-picture']);
+    }
+}

@@ -45,7 +45,6 @@ export class DonateFundPage implements OnInit {
   }
 
   formInitializer() {
-
     this.date = this.today.getFullYear() + '-' + (this.today.getMonth() + 1 ) + '-' + this.today.getDate();
     // console.log('current date', this.date);
     this.donateForm = this.formBuilder.group({
@@ -61,12 +60,15 @@ export class DonateFundPage implements OnInit {
     const dateFormat = test.card_expiry_date.split('T')[0];
     // This id will comes from the service, because when user will login, his ID will save to service
     // and retrieved at time of send data to server.
+    const donner = JSON.parse(localStorage.getItem('user'));
+    const donnerID = donner.id;
+    console.log('donner id ', donnerID);
     this.finalFundObject = '{"amount": "' + test.amount + '",' +
       '"currency": "' + test.currency + '",' +
         '"donnerCard": "' + test.donner_card + '",' +
         '"cardExpiryDate": "' + dateFormat + '",' +
         '"donation": { ' + '"date": "' + this.date + '",' +
-        '"donner": { "id": ' + 4 + '},' +
+        '"donner": { "id": ' + donnerID + '},' +
         '"charityHouse": { "id": ' + this.charityHouse + '}' + '}' + '}';
     console.log('full object', this.finalFundObject);
     const fundDonation = JSON.parse(this.finalFundObject);
@@ -81,9 +83,9 @@ export class DonateFundPage implements OnInit {
     );
   }
   saveFoodDonation(dataObj): Observable<any> {
-    // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
     console.log('data recieved for put. ', dataObj);
     const url = `${this.service.homeUrl}/fundDonations/newFundDonation`;
     return this.http.post(url, dataObj);
+    alert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
   }
 }
