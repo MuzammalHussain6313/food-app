@@ -22,6 +22,9 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         ReactiveFormsModule
     ],
-  declarations: [UpdatePage]
+    exports: [
+        UpdatePage
+    ],
+    declarations: [UpdatePage]
 })
 export class UpdatePageModule {}

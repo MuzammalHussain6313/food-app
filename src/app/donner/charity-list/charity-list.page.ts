@@ -27,12 +27,8 @@ export class CharityListPage implements OnInit {
         this.charityList = response.body;
         console.log('data loading from API');
         this.result = this.charityList.content;
-        // this.storage.clear();
-        this.storage.set('charityHouses', this.result);
-        this.storage.get('charityHouses').then((val) => {
-          this.result = val;
-          console.log('Your charity houses list saved in database is', val);
-        });
+        localStorage.removeItem('charityHouses');
+        localStorage.setItem('charityHouses', JSON.stringify(this.result));
         console.log('charityList : ', this.charityList.content);
       }
       // You can access status:
@@ -46,26 +42,13 @@ export class CharityListPage implements OnInit {
       console.log('error', error);
     });
     console.log('result' + this.result);
-    // this.data = this.http.get('http://localhost:8095/charityHouses/list');
-    // // this.loading = false;
-    // console.log('data', this.data);
-    // this.data.subscribe(data => {
-    //   this.result = data.content;
-    // });
-    // this.loading = false;
-    // console.log('result' + this.result);
   }
 
   loadData() {
-    this.storage.get('charityHouses').then((val) => {
-      this.result = val;
-      console.log('Your charity houses list is', val);
-    });
+    this.result = JSON.parse(localStorage.getItem('charityHouses'));
   }
   donateFund(item) {
     this.router.navigate(['donate-fund', item]);
-    // const url = `charityList/${item.id}`;
-    // this.router.navigateByUrl(url);
   }
 
   donateFood(item) {

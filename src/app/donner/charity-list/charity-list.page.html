@@ -11,13 +11,12 @@
 
 <ion-content>
     <ion-card class="welcome-card" *ngFor="let item of result">
-        <!--    <img src="/assets/quran-majeed.jpg" alt="" />-->
         <ion-card-header>
             <ion-card-title>{{item?.name}}</ion-card-title>
             <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-            <p> {{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>
+            <p>{{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>
             <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>
             <p>there are {{item?.no_of_members}} members in house.</p>
             <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds

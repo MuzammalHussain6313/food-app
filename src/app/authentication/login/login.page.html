@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,7 +14,7 @@
           </div>
           <div class="ion-padding">
             <ion-item>
-              <ion-input name="username" formControlName="email" type="text" placeholder="Email"></ion-input>
+              <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
             </ion-item>
             <span class="error-message" *ngIf="isSubmitted && errorControl.email.errors?.required">email is required.</span>
             <ion-item>
@@ -25,18 +22,9 @@
               <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
             </ion-item>
             <span class="error-message" *ngIf="isSubmitted && errorControl.password.errors?.required">Password is required.</span>
-            <ion-item>
-              <ion-label position="floating">User Role</ion-label>
-              <ion-select value="Donner" formControlName="role" placeholder="--Select--" okText="Okay" cancelText="Dismiss">
-                <ion-select-option value="admin">Admin</ion-select-option>
-                <ion-select-option value="donner">Donner</ion-select-option>
-                <ion-select-option value="charity house">Charity House</ion-select-option>
-              </ion-select>
-            </ion-item>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.role.errors?.required">Please select user role.</span>
           </div>
           <div class="ion-padding">
-            <ion-button size="large" (click)="login()" color="primary" type="submit" expand="block">Login</ion-button>
+            <ion-button shape="round" size="large" (click)="login()" color="primary" type="submit" expand="block">Login</ion-button>
           </div>
           <div>
             <ion-label *ngIf="test">Invalid email OR password. Please Enter correct details.</ion-label>
@@ -45,4 +33,14 @@
       </ion-row>
     </ion-grid>
   </form>
+  <ion-text (click)="forgotPassword()" color="danger">
+    <h4 style="padding-left: 30px">Forgot Password?</h4>
+  </ion-text>
+  <ion-label>
+  </ion-label>
+  <ion-footer style="padding-top: 40px">
+    <ion-button (click)="registerUser()" size="large" expand="block" color="secondary">
+      <ion-img class="register-icon" src="/assets/person-add-sharp.svg"></ion-img>
+      REGISTER A NEW USER</ion-button>
+  </ion-footer>
 </ion-content>

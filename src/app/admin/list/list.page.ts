@@ -5,7 +5,6 @@ import {NavController} from '@ionic/angular';
 import {HttpClient, HttpResponse, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PopoverController} from '@ionic/angular';
-import {PopoverComponent} from '../popover/popover.component';
 import {Storage} from '@ionic/storage';
 import 'rxjs-compat/add/operator/map';
 import 'rxjs-compat/add/operator/catch';
@@ -25,12 +24,11 @@ export class ListPage implements OnInit {
     }
     result: any = [];
     data: Observable<any>;
+    donnerActive: any;
+    charityHouseActive = true;
 
     loadData() {
-        this.storage.get('users').then((val) => {
-            this.result = val;
-            console.log('Your age is', val);
-        });
+        this.result = JSON.parse(localStorage.getItem('users'));
     }
 
     ngOnInit(): void {
@@ -40,9 +38,9 @@ export class ListPage implements OnInit {
                 this.t = response.body;
                 console.log('data loading from API');
                 this.result = this.t.content;
-                this.storage.clear();
-                this.storage.set('users', this.result);
-                console.log('t : ', this.t.content);
+                localStorage.removeItem('users');
+                localStorage.setItem('users', JSON.stringify(this.t.content));
+                console.log('data : ', this.t.content);
             }
             // You can access status:
             console.log('status code', response.status);
@@ -93,14 +91,6 @@ export class ListPage implements OnInit {
         this.router.navigateByUrl(url);
     }
 
-    async presentPopover(myEvent, item: any) {
-        const popover = await this.popoverController.create({
-            component: PopoverComponent,
-            componentProps: {id: item.id}
-        });
-        return await popover.present();
-    }
-
     updateItem(item: any) {
         const id = item;
         const url = `update/${id}`;
@@ -124,8 +114,19 @@ export class ListPage implements OnInit {
     }
     callAPI(student): Observable<any> {
         // delete code added and working correctly.
-        const url = `${this.service.homeUrl}/users/deleteUser/${student.id}`;
+        console.log('data received.', student);
+        const url = `${this.service.homeUrl}/users/deleteUser/${student}`;
         console.log('link', url);
         return this.http.delete(url);
+    }
+
+    activateDonner() {
+        this.donnerActive = true;
+        this.charityHouseActive = false;
+    }
+
+    activateCharityHouse() {
+        this.donnerActive = false;
+        this.charityHouseActive = true;
     }
 }

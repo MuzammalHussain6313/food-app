@@ -7,10 +7,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-local-notification": {
+  "cordova-plugin-stripe": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-local-notification"
+      "id": "cordova-plugin-stripe"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-fcm-with-dependecy-updated": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-fcm-with-dependecy-updated"
     },
     "is_top_level": true,
     "variables": {}

@@ -38,11 +38,14 @@ export class FeedbackPage implements OnInit {
   }
     sendFeedback() {
       const test = this.feedbackForm.value;
+      const charityHouse = JSON.parse(localStorage.getItem('user'));
+      const charityID = charityHouse.id;
+      console.log('charity id ', charityID);
       this.finalFeedbackObject = '{"email": "' + test.email + '",' +
-          '"subject": "' + test.subject + '",' +
-          '"feedbackMessage": "' + test.feedback_message + '",' +
-          '"donner": { "id": ' + this.donnerID + '},' +
-          '"charityHouse": { "id": ' + 4 + '}' + '}';
+          ' "subject": "' + test.subject + '",' +
+          ' "feedbackMessage": "' + test.feedback_message + '",' +
+          ' "donner": { "id": ' + this.donnerID + '},' +
+          ' "charityHouse": { "id": ' + charityID + '}' + '}';
       console.log('full object', this.finalFeedbackObject);
       const feedback = JSON.parse(this.finalFeedbackObject);
       this.saveFeedback(feedback).subscribe(
@@ -58,8 +61,9 @@ export class FeedbackPage implements OnInit {
   saveFeedback(dataObj): Observable<any> {
     console.log('data recieved for put. ', dataObj);
     const url = `${this.service.homeUrl}/feedbacks/newFeedback`;
-    this.presentAlertConfirm();
+    // this.presentAlertConfirm();
     return this.http.post(url, dataObj);
+    alert('Feedback is recorded. Thanks you for sending feedback.');
   }
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -81,7 +85,6 @@ export class FeedbackPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 

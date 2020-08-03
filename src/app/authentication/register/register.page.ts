@@ -3,8 +3,6 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subscription} from 'rxjs';
-import {PopoverComponent} from '../../admin/popover/popover.component';
-import {isNullOrUndefined} from 'util';
 import {ListService} from '../../list.service';
 
 @Component({

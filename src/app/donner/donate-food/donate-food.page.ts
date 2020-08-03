@@ -56,6 +56,9 @@ export class DonateFoodPage implements OnInit {
     console.log('form data', test);
     // This id will comes from the service, because when user will login, his ID will save to service
     // and retrieved at time of send data to server.
+    const donner = JSON.parse(localStorage.getItem('user'));
+    const donnerID = donner.id;
+    console.log('donner id ', donnerID);
     this.finalDonationObject = '{"quantityValue" : "' + test.quantity + '",' +
         '"quantityUnit" : "' + test.unit + '",' +
         '"foodItem": {' +
@@ -63,7 +66,7 @@ export class DonateFoodPage implements OnInit {
         '"expiry_date": "' + dateFormat + '",' +
         '"type": "' + test.type + '" },' +
         '"donation": {' + '"date": "' + this.date + '",' +
-        '"donner": {' + '"id": ' + 1 + ' },' +
+        '"donner": {' + '"id": ' + donnerID + ' },' +
         '"charityHouse": {' + '"id": ' + this.charityID + ' }}}';
     console.log('full object', this.finalDonationObject);
     const foodDonation = JSON.parse(this.finalDonationObject);
@@ -91,5 +94,6 @@ export class DonateFoodPage implements OnInit {
     console.log('data recieved for put. ', dataObj);
     const url = `${this.service.homeUrl}/foodDonationDetails/newFoodDonationDetails`;
     return this.http.post(url, dataObj);
+    alert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
   }
 }

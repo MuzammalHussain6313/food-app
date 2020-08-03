@@ -6,19 +6,37 @@
         <ion-title>
             Users
         </ion-title>
-        <ion-button slot="end" (click)="addUser()">
+        <ion-button shape="circle" slot="end" (click)="addUser()">
             <ion-icon name="add"></ion-icon>
         </ion-button>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list no-lines>
-        <ion-item *ngFor="let item of result" detail-push>
-            <ion-icon slot="start" name="person"></ion-icon>
-            <p (click)="showSingleItem(item)">{{item.first_name}} {{item.last_name}}</p>
-            <ion-img (click)="updateItem(item?.id)" style="width: 20px; height: 20px;" src="/assets/pencil-sharp.svg" alt="update" slot="end"></ion-img>
-            <ion-icon (click)="deleteProperty(item?.id)" size="default" name="trash" slot="end"></ion-icon>
-        </ion-item>
-    </ion-list>
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+            <ion-tab-button (click)="activateCharityHouse()">
+                <ion-label color="primary">Charity Houses</ion-label>
+            </ion-tab-button>
+            <ion-tab-button (click)="activateDonner()">
+                <ion-label color="primary">Donners</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+
+    </ion-tabs>
+
+<!--    <div *ngIf="donnerActive">-->
+<!--        <app-donners></app-donners>-->
+<!--    </div>-->
+<!--    <div *ngIf="charityHouseActive">-->
+<!--        <app-charity-houses></app-charity-houses>-->
+<!--    </div>-->
+<!--    <ion-list no-lines>-->
+<!--        <ion-item *ngFor="let item of result" detail-push>-->
+<!--            <ion-icon slot="start" name="person"></ion-icon>-->
+<!--            <p (click)="showSingleItem(item)">{{item?.first_name}} {{item?.last_name}}</p>-->
+<!--            <ion-img (click)="updateItem(item?.id)" style="width: 20px; height: 20px;" src="/assets/pencil-sharp.svg" alt="update" slot="end"></ion-img>-->
+<!--            <ion-icon (click)="deleteProperty(item?.id)" size="default" name="trash" slot="end"></ion-icon>-->
+<!--        </ion-item>-->
+<!--    </ion-list>-->
 </ion-content>

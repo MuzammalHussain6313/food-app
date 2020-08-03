@@ -96,10 +96,13 @@ export class ReviewComponent implements OnInit {
 
   addReview() {
     const test = this.reviewForm.value;
+    const charityHouse = JSON.parse(localStorage.getItem('user'));
+    const charityID = charityHouse.id;
+    console.log('charity id ', charityID);
     this.finalReviewObject = '{"star": ' + this.star + ',' +
         '"title": "' + test.title + '",' +
         '"donner": { "id": ' + this.donnerID + '},' +
-        '"charityHouse": { "id": ' + 4 + '}' + '}';
+        '"charityHouse": { "id": ' + charityID + '}' + '}';
     // This id will comes from the service, because when user will login, his ID will save to service
     // and retrieved at time of send data to server.
     console.log('full object', this.finalReviewObject);
@@ -115,7 +118,7 @@ export class ReviewComponent implements OnInit {
     );
   }
   saveReview(dataObj): Observable<any> {
-    console.log('data recieved for put. ', dataObj);
+    console.log('data received for post. ', dataObj);
     const url = `${this.service.homeUrl}/reviews/newReview`;
     return this.http.post(url, dataObj);
   }

@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PopoverController} from '@ionic/angular';
-import {PopoverComponent} from '../../admin/popover/popover.component';
 import {ReviewComponent} from './review/review.component';
 import {Storage} from '@ionic/storage';
 import {ListService} from '../../list.service';
@@ -34,12 +33,8 @@ export class DonnerListPage implements OnInit {
                 this.donnerList = response.body;
                 console.log('data loading from API');
                 this.result = this.donnerList.content;
-                // this.storage.clear();
-                this.storage.set('donners', this.result);
-                this.storage.get('donners').then((val) => {
-                    // this.result = val;
-                    console.log('Your data saved in database is', val);
-                });
+                localStorage.removeItem('donners');
+                localStorage.setItem('donners', JSON.stringify(this.result));
                 console.log('donnerList : ', this.donnerList.content);
             }
             // You can access status:
@@ -63,10 +58,11 @@ export class DonnerListPage implements OnInit {
     }
 
     loadData() {
-        this.storage.get('donners').then((val) => {
-            this.result = val;
-            console.log('Your data is', val);
-        });
+        this.result = JSON.parse(localStorage.getItem('donners'));
+        // this.storage.get('donners').then((val) => {
+        //     this.result = val;
+        //     console.log('Your data is', val);
+        // });
     }
 
     async review(myEvent, item: any) {
@@ -86,7 +82,12 @@ export class DonnerListPage implements OnInit {
 
     }
 
-    openChat(item: any) {
-        this.router.navigate(['chat']);
+    openChat(first: string, last: string) {
+        localStorage.setItem('donnerName', JSON.stringify(first.toLowerCase() + '-' + last.toLowerCase()));
+        this.router.navigate(['charity-house-chat']);
+    }
+
+    sendReport(item: any) {
+        this.router.navigate(['send-report', item]);
     }
 }
