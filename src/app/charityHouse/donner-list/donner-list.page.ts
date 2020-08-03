@@ -82,9 +82,9 @@ export class DonnerListPage implements OnInit {
 
     }
 
-    openChat(first: any, last: any) {
-        const donnerName = first + ' ' + last;
-        this.router.navigate(['chat', donnerName]);
+    openChat(first: string, last: string) {
+        localStorage.setItem('donnerName', JSON.stringify(first.toLowerCase() + '-' + last.toLowerCase()));
+        this.router.navigate(['charity-house-chat']);
     }
 
     sendReport(item: any) {

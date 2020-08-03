@@ -220,8 +220,28 @@ const routes: Routes = [
               loadChildren: () => import('./admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
           }
       ]
-  },  { path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule' },
-  { path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule' }
+  },
+  { path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule' },
+  { path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule' },
+  { path: 'donner-chat', loadChildren: './donner/donner-chat/donner-chat.module#DonnerChatPageModule' },
+  { path: 'admin-chat', loadChildren: './admin/admin-chat/admin-chat.module#AdminChatPageModule' },
+  {
+      path: 'charity-house-chat',
+      children: [
+          {
+              path: '',
+              loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
+                  .then(m => m.CharityHouseChatPageModule)
+          },
+          {
+              path: ':donnerName',
+              loadChildren: () => import('./charityHouse/charity-house-chat/charity-house-chat.module')
+                  .then(m => m.CharityHouseChatPageModule)
+          }
+      ]
+  },
+  { path: 'chat-channels', loadChildren: './donner/chat-channels/chat-channels.module#ChatChannelsPageModule' }
+
 
 
 ];

@@ -46,6 +46,7 @@ messages = [
             console.log('data', data);
             this.recivedData = data;
             this.messages = this.recivedData.filter(x => x.user === this.donnerName || x.user === this.currentUser);
+            console.log('messages after filter', this.messages);
         });
     }
     ngOnInit() {
@@ -63,15 +64,18 @@ messages = [
         this.role = localStorage.getItem('role');
         console.log('role', this.role);
         console.log('user', this.user);
-        if (this.role === 'donner') {
-            this.currentUser = this.user.user.first_name + ' ' + this.user.user.last_name;
-        }
-        if (this.role === 'admin') {
-            this.currentUser = this.user.first_name + ' ' + this.user.last_name;
-        }
-        if (this.role === 'charity house') {
-            this.currentUser = this.user.user.first_name + ' ' + this.user.user.last_name;
-        }
+        // if (this.role === 'donner') {
+        //     this.currentUser = this.user.user.first_name + ' ' + this.user.user.last_name;
+        //     console.log('donner', this.currentUser);
+        // }
+        // if (this.role === 'admin') {
+        //     this.currentUser = this.user.first_name + ' ' + this.user.last_name;
+        //     console.log('admin', this.currentUser);
+        // }
+        // if (this.role === 'charity house') {
+        //     this.currentUser = this.user.user.first_name + ' ' + this.user.user.last_name;
+        //     console.log('charity house', this.currentUser);
+        // }
     }
     sendMessage() {
         this.db.list('/messages').push({
@@ -94,4 +98,5 @@ messages = [
         //     this.content.scrollToBottom(200);
         // });
     }
+
 }

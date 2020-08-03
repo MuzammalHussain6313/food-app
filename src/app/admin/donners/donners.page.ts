@@ -61,7 +61,7 @@ export class DonnersPage implements OnInit {
   updateItem(id: any) {
     // this.listActive = false;
     // this.updateActive = true;
-    const url = `update/${id}`
+    const url = `update/${id}`;
     this.router.navigateByUrl(url);
   }
 
