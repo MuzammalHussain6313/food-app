@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import {ListService} from '../list.service';
 import {Router} from '@angular/router';
+import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
+import {Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +14,19 @@ import {Router} from '@angular/router';
 export class HomePage {
 
   constructor(private service: ListService,
+              private push: Push,
+              private plateForm: Platform,
+              private statusBar: StatusBar,
+              private splashScreen: SplashScreen,
               // private localNotifications: LocalNotifications,
               // private alertController: AlertController,
-              private router: Router) {}
+              private router: Router) {
+    plateForm.ready().then(() => {
+      statusBar.styleDefault();
+      splashScreen.hide();
+      this.pushNotification();
+    });
+  }
 
   data;
 
@@ -41,6 +55,28 @@ export class HomePage {
   //   });
   // }
 
+  pushNotification() {
+    const options: PushOptions = {
+      android: {
+        senderID: '667628560401'
+      },
+      ios: {
+        alert: 'true',
+        badge: true,
+        sound: 'false'
+      }
+    }
+
+    const pushObject: PushObject = this.push.init(options);
+
+
+    pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+
+    pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
+
+    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+
+  }
   loadService() {
     this.data = this.service.getUser();
     console.log('data', this.data);

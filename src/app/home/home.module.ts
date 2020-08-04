@@ -5,6 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import {Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import { Push} from '@ionic-native/push/ngx';
 
 @NgModule({
   imports: [
@@ -18,6 +22,11 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  providers: [
+      Push,
+      Platform,
+      StatusBar,
+      SplashScreen]
 })
 export class HomePageModule {}

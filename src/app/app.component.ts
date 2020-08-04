@@ -86,16 +86,6 @@ export class AppComponent implements OnInit {
         this.appPages = JSON.parse(localStorage.getItem('appPages'));
         this.user = JSON.parse(localStorage.getItem('user'));
         console.log('user', this.user);
-        // if (role === 'admin') {
-        //     this.user = JSON.parse(localStorage.getItem('adminUser'));
-        //     console.log('admin', this.user);
-        // } else if (role === 'donner') {
-        //     this.user = JSON.parse(localStorage.getItem('donner'));
-        //     console.log('donner', this.user);
-        // } else if (role === 'charity house') {
-        //     this.user = JSON.parse(localStorage.getItem('charity house'));
-        //     console.log('charity house', this.user);
-        // }
     }
 
     logOut() {

@@ -1,6 +1,6 @@
 {
   "appId": "com.charityApp",
-  "appName": "charityAPP",
+  "appName": "Charity App",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
