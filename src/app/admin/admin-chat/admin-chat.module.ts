@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminChatPage } from './admin-chat.page';
+import {AutosizeModule} from 'ngx-autosize';
 
 const routes: Routes = [
   {
@@ -15,12 +16,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+        AutosizeModule
+    ],
   declarations: [AdminChatPage]
 })
 export class AdminChatPageModule {}

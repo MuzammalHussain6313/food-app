@@ -80,7 +80,7 @@ export class LoginPage implements OnInit {
                         if (d.role === 'admin') {
                             this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                                 { title: 'Manage Users', url: '/tabs', icon: 'list', },
-                                { title: 'Message', url: '/admin-chat', icon: 'ios-chatboxes'},
+                                { title: 'Message', url: '/chat-list', icon: 'ios-chatboxes'},
                                 { title: 'Profile', url: `/admin-profile/${d.user.id}`, icon: 'person'}];
                             console.log('user', d.role);
                             this.service.setRole(d.role);
