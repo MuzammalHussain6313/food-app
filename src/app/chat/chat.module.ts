@@ -15,14 +15,14 @@ const routes: Routes = [
   }
 ];
 const firebaseConfig = {
-  apiKey: 'AIzaSyCkF4ALd5GXXPrtq5Xt496r0BW0Kb5Vpek',
-  authDomain: 'chat-app-in-ionic.firebaseapp.com',
-  databaseURL: 'https://chat-app-in-ionic.firebaseio.com',
-  projectId: 'chat-app-in-ionic',
-  storageBucket: 'chat-app-in-ionic.appspot.com',
-  messagingSenderId: '1089372479322',
-  appId: '1:1089372479322:web:4fcee22f158c2c8cfe9d63',
-  measurementId: 'G-5ZMBVRH11V'
+  apiKey: 'AIzaSyBmQgRPtxBmoCx7yspH4X877x2lFiBCOag',
+  authDomain: 'food-distribution-app-fb350.firebaseapp.com',
+  databaseURL: 'https://food-distribution-app-fb350.firebaseio.com',
+  projectId: 'food-distribution-app-fb350',
+  storageBucket: 'food-distribution-app-fb350.appspot.com',
+  messagingSenderId: '929354685211',
+  appId: '1:929354685211:web:3780621a28f01b84a1d1be',
+  measurementId: 'G-NKFBGSVN9C'
 };
 @NgModule({
   imports: [

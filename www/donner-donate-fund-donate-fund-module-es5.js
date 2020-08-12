@@ -142,7 +142,7 @@ var DonateFundPage = /** @class */ (function () {
         var dateFormat = test.card_expiry_date.split('T')[0];
         // This id will comes from the service, because when user will login, his ID will save to service
         // and retrieved at time of send data to server.
-        var donner = JSON.parse(localStorage.getItem('donner'));
+        var donner = JSON.parse(localStorage.getItem('user'));
         var donnerID = donner.id;
         console.log('donner id ', donnerID);
         this.finalFundObject = '{"amount": "' + test.amount + '",' +
@@ -162,10 +162,10 @@ var DonateFundPage = /** @class */ (function () {
         });
     };
     DonateFundPage.prototype.saveFoodDonation = function (dataObj) {
-        // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
         console.log('data recieved for put. ', dataObj);
         var url = this.service.homeUrl + "/fundDonations/newFundDonation";
         return this.http.post(url, dataObj);
+        alert('Your donation successfully sent to selected charity house. Thanks for donating fund.');
     };
     DonateFundPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },

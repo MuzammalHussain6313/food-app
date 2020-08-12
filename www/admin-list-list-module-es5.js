@@ -7,18 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            Users\r\n        </ion-title>\r\n        <ion-button slot=\"end\" (click)=\"addUser()\">\r\n            <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-list no-lines>\r\n        <ion-item *ngFor=\"let item of result\" detail-push>\r\n            <ion-icon slot=\"start\" name=\"person\"></ion-icon>\r\n            <p (click)=\"showSingleItem(item)\">{{item?.first_name}} {{item?.last_name}}</p>\r\n            <ion-img (click)=\"updateItem(item?.id)\" style=\"width: 20px; height: 20px;\" src=\"/assets/pencil-sharp.svg\" alt=\"update\" slot=\"end\"></ion-img>\r\n            <ion-icon (click)=\"deleteProperty(item?.id)\" size=\"default\" name=\"trash\" slot=\"end\"></ion-icon>\r\n        </ion-item>\r\n    </ion-list>\r\n</ion-content>\r\n"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/admin/popover/popover.component.html":
-/*!********************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/admin/popover/popover.component.html ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-list>\r\n  <ion-item (click)=\"updateItem()\">\r\n    <ion-icon slot=\"start\" name=\"create\"></ion-icon>\r\n    <ion-label>Update</ion-label>\r\n  </ion-item>\r\n  <ion-item (click)=\"deleteProperty()\">\r\n    <ion-icon slot=\"start\" name=\"trash\"></ion-icon>\r\n    <ion-label>Delete</ion-label>\r\n  </ion-item>\r\n</ion-list>\r\n"
+module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n        <ion-buttons slot=\"start\">\r\n            <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title>\r\n            Users\r\n        </ion-title>\r\n        <ion-button shape=\"circle\" slot=\"end\" (click)=\"addUser()\">\r\n            <ion-icon name=\"add\"></ion-icon>\r\n        </ion-button>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <ion-tabs>\r\n        <ion-tab-bar slot=\"top\">\r\n            <ion-tab-button (click)=\"activateCharityHouse()\">\r\n                <ion-label color=\"primary\">Charity Houses</ion-label>\r\n            </ion-tab-button>\r\n            <ion-tab-button (click)=\"activateDonner()\">\r\n                <ion-label color=\"primary\">Donners</ion-label>\r\n            </ion-tab-button>\r\n        </ion-tab-bar>\r\n\r\n    </ion-tabs>\r\n\r\n<!--    <div *ngIf=\"donnerActive\">-->\r\n<!--        <app-donners></app-donners>-->\r\n<!--    </div>-->\r\n<!--    <div *ngIf=\"charityHouseActive\">-->\r\n<!--        <app-charity-houses></app-charity-houses>-->\r\n<!--    </div>-->\r\n<!--    <ion-list no-lines>-->\r\n<!--        <ion-item *ngFor=\"let item of result\" detail-push>-->\r\n<!--            <ion-icon slot=\"start\" name=\"person\"></ion-icon>-->\r\n<!--            <p (click)=\"showSingleItem(item)\">{{item?.first_name}} {{item?.last_name}}</p>-->\r\n<!--            <ion-img (click)=\"updateItem(item?.id)\" style=\"width: 20px; height: 20px;\" src=\"/assets/pencil-sharp.svg\" alt=\"update\" slot=\"end\"></ion-img>-->\r\n<!--            <ion-icon (click)=\"deleteProperty(item?.id)\" size=\"default\" name=\"trash\" slot=\"end\"></ion-icon>-->\r\n<!--        </ion-item>-->\r\n<!--    </ion-list>-->\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -204,8 +193,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _list_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./list.page */ "./src/app/admin/list/list.page.ts");
-/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../popover/popover.component */ "./src/app/admin/popover/popover.component.ts");
-
 
 
 
@@ -229,8 +216,8 @@ var ListPageModule = /** @class */ (function () {
                     }
                 ])
             ],
-            entryComponents: [_popover_popover_component__WEBPACK_IMPORTED_MODULE_7__["PopoverComponent"]],
-            declarations: [_list_page__WEBPACK_IMPORTED_MODULE_6__["ListPage"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_7__["PopoverComponent"]]
+            entryComponents: [],
+            declarations: [_list_page__WEBPACK_IMPORTED_MODULE_6__["ListPage"]]
         })
     ], ListPageModule);
     return ListPageModule;
@@ -267,13 +254,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../popover/popover.component */ "./src/app/admin/popover/popover.component.ts");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs-compat/add/operator/map */ "./node_modules/rxjs-compat/add/operator/map.js");
-/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs-compat/add/operator/catch */ "./node_modules/rxjs-compat/add/operator/catch.js");
-/* harmony import */ var rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_9__);
-
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs-compat/add/operator/map */ "./node_modules/rxjs-compat/add/operator/map.js");
+/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs-compat/add/operator/catch */ "./node_modules/rxjs-compat/add/operator/catch.js");
+/* harmony import */ var rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_catch__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -291,6 +276,7 @@ var ListPage = /** @class */ (function () {
         this.service = service;
         this.popoverController = popoverController;
         this.result = [];
+        this.charityHouseActive = true;
     }
     ListPage.prototype.loadData = function () {
         this.result = JSON.parse(localStorage.getItem('users'));
@@ -353,23 +339,6 @@ var ListPage = /** @class */ (function () {
         console.log(url);
         this.router.navigateByUrl(url);
     };
-    ListPage.prototype.presentPopover = function (myEvent, item) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var popover;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.popoverController.create({
-                            component: _popover_popover_component__WEBPACK_IMPORTED_MODULE_6__["PopoverComponent"],
-                            componentProps: { id: item.id }
-                        })];
-                    case 1:
-                        popover = _a.sent();
-                        return [4 /*yield*/, popover.present()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
     ListPage.prototype.updateItem = function (item) {
         var id = item;
         var url = "update/" + id;
@@ -390,13 +359,22 @@ var ListPage = /** @class */ (function () {
     };
     ListPage.prototype.callAPI = function (student) {
         // delete code added and working correctly.
-        var url = this.service.homeUrl + "/users/deleteUser/" + student.id;
+        console.log('data received.', student);
+        var url = this.service.homeUrl + "/users/deleteUser/" + student;
         console.log('link', url);
         return this.http.delete(url);
     };
+    ListPage.prototype.activateDonner = function () {
+        this.donnerActive = true;
+        this.charityHouseActive = false;
+    };
+    ListPage.prototype.activateCharityHouse = function () {
+        this.donnerActive = false;
+        this.charityHouseActive = true;
+    };
     ListPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"] },
+        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] },
         { type: _list_service__WEBPACK_IMPORTED_MODULE_2__["ListService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["PopoverController"] }
@@ -408,116 +386,12 @@ var ListPage = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./list.page.scss */ "./src/app/admin/list/list.page.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"],
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
             _list_service__WEBPACK_IMPORTED_MODULE_2__["ListService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["PopoverController"]])
     ], ListPage);
     return ListPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/admin/popover/popover.component.scss":
-/*!******************************************************!*\
-  !*** ./src/app/admin/popover/popover.component.scss ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL3BvcG92ZXIvcG9wb3Zlci5jb21wb25lbnQuc2NzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/admin/popover/popover.component.ts":
-/*!****************************************************!*\
-  !*** ./src/app/admin/popover/popover.component.ts ***!
-  \****************************************************/
-/*! exports provided: PopoverComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverComponent", function() { return PopoverComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-
-
-var PopoverComponent = /** @class */ (function () {
-    function PopoverComponent(popoverController, navParams, router, http, route) {
-        this.popoverController = popoverController;
-        this.navParams = navParams;
-        this.router = router;
-        this.http = http;
-        this.route = route;
-    }
-    PopoverComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.id = this.navParams.data.id;
-        console.log('id ' + this.id);
-        var val = this.id;
-        console.log(val);
-        var url = "http://localhost:8095/users/getUser/" + val;
-        this.data = this.http.get(url);
-        console.log(this.data);
-        this.data.subscribe(function (data) {
-            _this.user = data;
-            console.log(_this.user);
-        });
-        console.log(this.user);
-    };
-    PopoverComponent.prototype.deleteProperty = function () {
-        var _this = this;
-        console.log('formData ' + this.user.id);
-        this.callAPI(this.user).subscribe(function (data) {
-            console.log('I got this response -> ', data);
-            _this.router.navigate(['list']);
-        }, function (error) {
-            console.log('error', error);
-        });
-        alert('deleted successfully');
-        this.router.navigate(['list']);
-    };
-    PopoverComponent.prototype.callAPI = function (student) {
-        // delete code added and working correctly.
-        var url = "http://localhost:8095/users/deleteUser/" + student.id;
-        console.log('link', url);
-        return this.http.delete(url);
-    };
-    PopoverComponent.prototype.updateItem = function () {
-        var id = this.user.id;
-        var url = "update/" + id;
-        console.log(url);
-        this.router.navigateByUrl(url);
-    };
-    PopoverComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
-    ]; };
-    PopoverComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-popover',
-            template: __webpack_require__(/*! raw-loader!./popover.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/popover/popover.component.html"),
-            styles: [__webpack_require__(/*! ./popover.component.scss */ "./src/app/admin/popover/popover.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
-    ], PopoverComponent);
-    return PopoverComponent;
 }());
 
 

@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Donner List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"welcome-card\" *ngFor=\"let item of result\">\n    <ion-card-header>\n      <ion-card-title>{{item?.user.first_name}}</ion-card-title>\n      <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>\n    </ion-card-header>\n    <ion-card-content>\n      <p> {{item?.user.first_name}} {{item?.user.last_name}} locate in {{item?.address}}. {{item?.contact}} is\n        Contact number and email is {{item?.user.email}}. You can\n        <ion-label (click)=\"review($event, item)\" slot=\"start\" color=\"success\">Review</ion-label>\n        them OR send <ion-label (click)=\"feedBack(item)\" position=\"end\" color=\"primary\">Feedback</ion-label>.</p>\n      <ion-row>\n        <ion-col size=\"10\">\n          <ion-icon *ngFor=\"let item of itration\" size=\"large\" color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon size=\"large\" color=\"primary\" name=\"star-half\"></ion-icon>\n          <ion-label>4.5</ion-label><br>\n        </ion-col>\n        <ion-col align-items-start size=\"2\">\n          <ion-icon class=\"msg-btn\" (click)=\"openChat(item)\" size=\"large\" ios=\"ios-chatboxes\" md=\"md-chatboxes\"></ion-icon>\n        </ion-col>\n      </ion-row>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Donner List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"welcome-card\" *ngFor=\"let item of result\">\n    <ion-card-header>\n      <ion-card-title>{{item?.user.first_name}}</ion-card-title>\n      <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-row>\n        <ion-col size=\"10\">\n          <ion-icon *ngFor=\"let item of itration\" size=\"large\" color=\"primary\" name=\"star\"></ion-icon>\n          <ion-icon size=\"large\" color=\"primary\" name=\"star-half\"></ion-icon>\n          <ion-label>4.5</ion-label><br>\n        </ion-col>\n        <ion-col align-items-start size=\"2\">\n          <ion-icon class=\"msg-btn\" (click)=\"openChat(item?.user.first_name, item?.user.last_name)\" size=\"large\" ios=\"ios-chatboxes\" md=\"md-chatboxes\"></ion-icon>\n        </ion-col>\n      </ion-row>\n      <p> {{item?.user.first_name}} {{item?.user.last_name}} locate in {{item?.address}}. {{item?.contact}} is\n        Contact number and email is {{item?.user.email}}. You can\n        <ion-label (click)=\"sendReport(item)\" slot=\"start\" color=\"success\">Report</ion-label> that user.</p>\n      <ion-button mode=\"ios\" size=\"small\" (click)=\"feedBack(item)\" slot=\"start\" color=\"success\">Send Feedback</ion-button>\n      <ion-button mode=\"ios\" size=\"small\" (click)=\"review($event, item)\" slot=\"end\" color=\"primary\">Add Review</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -173,8 +173,12 @@ let DonnerListPage = class DonnerListPage {
     }
     active($event) {
     }
-    openChat(item) {
-        this.router.navigate(['chat']);
+    openChat(first, last) {
+        localStorage.setItem('donnerName', JSON.stringify(first.toLowerCase() + '-' + last.toLowerCase()));
+        this.router.navigate(['charity-house-chat']);
+    }
+    sendReport(item) {
+        this.router.navigate(['send-report', item]);
     }
 };
 DonnerListPage.ctorParameters = () => [
@@ -369,7 +373,7 @@ let ReviewComponent = class ReviewComponent {
     }
     addReview() {
         const test = this.reviewForm.value;
-        const charityHouse = JSON.parse(localStorage.getItem('charity house'));
+        const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
         console.log('charity id ', charityID);
         this.finalReviewObject = '{"star": ' + this.star + ',' +

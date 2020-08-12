@@ -10,10 +10,13 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
 
-    implementation "com.android.support:support-v4:26.+"
+    implementation "com.google.firebase:firebase-messaging:19.0.0"
+    implementation "com.stripe:stripe-android:4.1.2"
 }
 apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
-apply from: "../../node_modules/cordova-plugin-local-notification/src/android/build/localnotification.gradle"
+apply from: "../../node_modules/cordova-plugin-fcm-with-dependecy-updated/src/android/FCMPlugin.gradle"
+apply from: "../../node_modules/cordova-support-google-services/build.gradle"
+apply from: "../../node_modules/phonegap-plugin-multidex/multidex.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

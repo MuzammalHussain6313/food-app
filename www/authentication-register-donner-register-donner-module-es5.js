@@ -146,7 +146,7 @@ var RegisterDonnerPage = /** @class */ (function () {
                 '", \n' + this.user + ' }';
             console.log('data before parsing', this.donner);
             var completeDonner = JSON.parse(this.donner);
-            console.log('complete charity house', completeDonner);
+            console.log('complete Donner', completeDonner);
             this.saveHttpReq(completeDonner).subscribe(function (data) {
                 alert('Please! check your email and verify your account.');
                 console.log('I got this response -> ', data);
