@@ -137,7 +137,7 @@ let RegisterDonnerPage = class RegisterDonnerPage {
                 '", \n' + this.user + ' }';
             console.log('data before parsing', this.donner);
             const completeDonner = JSON.parse(this.donner);
-            console.log('complete charity house', completeDonner);
+            console.log('complete Donner', completeDonner);
             this.saveHttpReq(completeDonner).subscribe(data => {
                 alert('Please! check your email and verify your account.');
                 console.log('I got this response -> ', data);

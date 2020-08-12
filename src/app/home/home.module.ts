@@ -8,7 +8,7 @@ import { HomePage } from './home.page';
 import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import { Push} from '@ionic-native/push/ngx';
+// import { Push} from '@ionic-native/push/ngx';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { Push} from '@ionic-native/push/ngx';
   ],
   declarations: [HomePage],
   providers: [
-      Push,
+      // Push,
       Platform,
       StatusBar,
       SplashScreen]

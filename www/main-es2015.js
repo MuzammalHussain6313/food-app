@@ -8,6 +8,22 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./admin/admin-chat/admin-chat.module": [
+		"./src/app/admin/admin-chat/admin-chat.module.ts",
+		"admin-admin-chat-admin-chat-module"
+	],
+	"./admin/chat-list/chat-list.module": [
+		"./src/app/admin/chat-list/chat-list.module.ts",
+		"admin-chat-list-chat-list-module"
+	],
+	"./admin/edit-profile/edit-profile.module": [
+		"./src/app/admin/edit-profile/edit-profile.module.ts",
+		"admin-edit-profile-edit-profile-module"
+	],
+	"./admin/tabs/tabs.module": [
+		"./src/app/admin/tabs/tabs.module.ts",
+		"admin-tabs-tabs-module"
+	],
 	"./admin/update/update.module": [
 		"./src/app/admin/update/update.module.ts",
 		"admin-update-update-module"
@@ -48,13 +64,17 @@ var map = {
 		"./src/app/charityHouse/feedback/feedback.module.ts",
 		"charityHouse-feedback-feedback-module"
 	],
-	"./chat/chat.module": [
-		"./src/app/chat/chat.module.ts",
-		"chat-chat-module"
+	"./charityHouse/send-report/send-report.module": [
+		"./src/app/charityHouse/send-report/send-report.module.ts",
+		"charityHouse-send-report-send-report-module"
 	],
 	"./donner/charity-list/charity-list.module": [
 		"./src/app/donner/charity-list/charity-list.module.ts",
 		"donner-charity-list-charity-list-module"
+	],
+	"./donner/chat-channels/chat-channels.module": [
+		"./src/app/donner/chat-channels/chat-channels.module.ts",
+		"donner-chat-channels-chat-channels-module"
 	],
 	"./donner/donate-food/donate-food.module": [
 		"./src/app/donner/donate-food/donate-food.module.ts",
@@ -63,6 +83,30 @@ var map = {
 	"./donner/donate-fund/donate-fund.module": [
 		"./src/app/donner/donate-fund/donate-fund.module.ts",
 		"donner-donate-fund-donate-fund-module"
+	],
+	"./donner/donner-chat/donner-chat.module": [
+		"./src/app/donner/donner-chat/donner-chat.module.ts",
+		"donner-donner-chat-donner-chat-module"
+	],
+	"./donner/feed-backs/feed-backs.module": [
+		"./src/app/donner/feed-backs/feed-backs.module.ts",
+		"donner-feed-backs-feed-backs-module"
+	],
+	"./shared/change-password/change-password.module": [
+		"./src/app/shared/change-password/change-password.module.ts",
+		"shared-change-password-change-password-module"
+	],
+	"./shared/help/help.module": [
+		"./src/app/shared/help/help.module.ts",
+		"shared-help-help-module"
+	],
+	"./shared/open-admin-chat/open-admin-chat.module": [
+		"./src/app/shared/open-admin-chat/open-admin-chat.module.ts",
+		"shared-open-admin-chat-open-admin-chat-module"
+	],
+	"./upload-image/upload-image.module": [
+		"./src/app/upload-image/upload-image.module.ts",
+		"upload-image-upload-image-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -505,7 +549,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu type=\"overlay\">\r\n      <ion-content>\r\n        <ion-header class=\"bar-profile\">\r\n          <div *ngIf=\"user\" class=\"profile\">\r\n            <img class=\"profile-picture\" src=\"assets/20181028_231840.png\"/>\r\n            <h3 class=\"name\">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>\r\n            <h3 class=\"name\">{{user?.first_name}} {{user?.last_name}}</h3>\r\n          </div>\r\n          <div *ngIf=\"!user\" class=\"profile\">\r\n            <img class=\"profile-picture\" src=\"assets/person-circle-outline.png\"/>\r\n            <h3 class=\"name\">Your Name</h3>\r\n          </div>\r\n        </ion-header>\r\n        <ion-list>\r\n          <ion-menu-toggle auto-hide=\"false\">\r\n            <ion-item *ngFor=\"let p of appPages\" class=\"test\" [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\r\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\r\n              <ion-label>\r\n                {{p.title}}\r\n              </ion-label>\r\n            </ion-item>\r\n            <ion-item lines=\"none\" class=\"logout\">\r\n              <ion-button (click)=\"logOut()\" size=\"default\" shape=\"round\" expand=\"full\" color=\"danger\">\r\n                Logout <ion-icon class=\"logout-icon\" size=\"large\" name=\"log-out\"></ion-icon>\r\n              </ion-button>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </ion-list>\r\n      </ion-content>\r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n"
+module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu *ngIf=\"user\" type=\"overlay\">\r\n      <ion-content>\r\n\r\n        <ion-menu-toggle auto-hide=\"false\">\r\n          <ion-header class=\"bar-profile\">\r\n            <div *ngIf=\"user\" class=\"profile\">\r\n              <img [routerLink]=\"['profile-picture']\" class=\"profile-picture\" src=\"assets/20181028_231840.png\"/>\r\n              <h3 class=\"name\">{{user?.user?.first_name}} {{user?.user?.last_name}}</h3>\r\n              <h3 class=\"name\">{{user?.first_name}} {{user?.last_name}}</h3>\r\n            </div>\r\n            <div *ngIf=\"!user\" class=\"profile\">\r\n              <img class=\"profile-picture\" src=\"assets/person-circle-outline.png\"/>\r\n              <h3 class=\"name\">Your Name</h3>\r\n            </div>\r\n          </ion-header>\r\n          <ion-item *ngFor=\"let p of appPages\" class=\"test\" [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\r\n            <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\r\n            <ion-label>\r\n              {{p.title}}\r\n            </ion-label>\r\n          </ion-item>\r\n          <ion-item lines=\"none\" class=\"logout\">\r\n            <ion-button (click)=\"logOut()\" size=\"default\" shape=\"round\" expand=\"full\" color=\"danger\">\r\n              Logout <ion-icon class=\"logout-icon\" size=\"large\" name=\"log-out\"></ion-icon>\r\n            </ion-button>\r\n          </ion-item>\r\n        </ion-menu-toggle>\r\n        <ion-list>\r\n\r\n        </ion-list>\r\n      </ion-content>\r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n"
 
 /***/ }),
 
@@ -534,6 +578,19 @@ const routes = [
     {
         path: 'home',
         loadChildren: () => __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
+    },
+    {
+        path: 'detail',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-detail-detail-module */ "admin-detail-detail-module").then(__webpack_require__.bind(null, /*! ./admin/detail/detail.module */ "./src/app/admin/detail/detail.module.ts")).then(m => m.DetailPageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-detail-detail-module */ "admin-detail-detail-module").then(__webpack_require__.bind(null, /*! ./admin/detail/detail.module */ "./src/app/admin/detail/detail.module.ts")).then(m => m.DetailPageModule)
+            }
+        ]
     },
     {
         path: 'list',
@@ -602,7 +659,6 @@ const routes = [
         path: 'register',
         loadChildren: './authentication/register/register.module#RegisterPageModule'
     },
-    // tslint:disable-next-line:max-line-length
     {
         path: 'register-charity-house',
         children: [
@@ -632,9 +688,129 @@ const routes = [
         path: 'feedback',
         loadChildren: './charityHouse/feedback/feedback.module#FeedbackPageModule'
     },
-    { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },
-    { path: 'profile-picture', loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule' },
-    { path: 'forgot-password', loadChildren: './authentication/forgot-password/forgot-password.module#ForgotPasswordPageModule' }
+    {
+        path: 'chat',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | chat-chat-module */ "chat-chat-module").then(__webpack_require__.bind(null, /*! ./chat/chat.module */ "./src/app/chat/chat.module.ts")).then(m => m.ChatPageModule)
+            },
+            {
+                path: ':donnerName',
+                loadChildren: () => __webpack_require__.e(/*! import() | chat-chat-module */ "chat-chat-module").then(__webpack_require__.bind(null, /*! ./chat/chat.module */ "./src/app/chat/chat.module.ts")).then(m => m.ChatPageModule)
+            }
+        ]
+    },
+    {
+        path: 'profile-picture',
+        loadChildren: './authentication/profile-picture/profile-picture.module#ProfilePicturePageModule'
+    },
+    {
+        path: 'forgot-password',
+        loadChildren: './authentication/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+    },
+    // { path: 'donners', loadChildren: './admin/donners/donners.module#DonnersPageModule' },
+    // { path: 'charity-houses', loadChildren: './admin/charity-houses/charity-houses.module#CharityHousesPageModule' }
+    {
+        path: 'tabs',
+        loadChildren: './admin/tabs/tabs.module#TabsPageModule'
+    },
+    {
+        path: 'show-single-charity-house',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-show-single-charity-house-show-single-charity-house-module */ "admin-show-single-charity-house-show-single-charity-house-module").then(__webpack_require__.bind(null, /*! ./admin/show-single-charity-house/show-single-charity-house.module */ "./src/app/admin/show-single-charity-house/show-single-charity-house.module.ts"))
+                    .then(m => m.ShowSingleCharityHousePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-show-single-charity-house-show-single-charity-house-module */ "admin-show-single-charity-house-show-single-charity-house-module").then(__webpack_require__.bind(null, /*! ./admin/show-single-charity-house/show-single-charity-house.module */ "./src/app/admin/show-single-charity-house/show-single-charity-house.module.ts"))
+                    .then(m => m.ShowSingleCharityHousePageModule)
+            }
+        ]
+    },
+    {
+        path: 'update-charity-house',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-update-charity-house-update-charity-house-module */ "admin-update-charity-house-update-charity-house-module").then(__webpack_require__.bind(null, /*! ./admin/update-charity-house/update-charity-house.module */ "./src/app/admin/update-charity-house/update-charity-house.module.ts"))
+                    .then(m => m.UpdateCharityHousePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-update-charity-house-update-charity-house-module */ "admin-update-charity-house-update-charity-house-module").then(__webpack_require__.bind(null, /*! ./admin/update-charity-house/update-charity-house.module */ "./src/app/admin/update-charity-house/update-charity-house.module.ts"))
+                    .then(m => m.UpdateCharityHousePageModule)
+            }
+        ]
+    },
+    { path: 'send-report', loadChildren: './charityHouse/send-report/send-report.module#SendReportPageModule' },
+    {
+        path: 'reports',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | donner-reports-reports-module */ "donner-reports-reports-module").then(__webpack_require__.bind(null, /*! ./donner/reports/reports.module */ "./src/app/donner/reports/reports.module.ts")).then(m => m.ReportsPageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | donner-reports-reports-module */ "donner-reports-reports-module").then(__webpack_require__.bind(null, /*! ./donner/reports/reports.module */ "./src/app/donner/reports/reports.module.ts")).then(m => m.ReportsPageModule)
+            }
+        ]
+    },
+    // { path: 'reviews', loadChildren: './donner/reviews/reviews.module#ReviewsPageModule' },
+    { path: 'feed-backs', loadChildren: './donner/feed-backs/feed-backs.module#FeedBacksPageModule' },
+    {
+        path: 'profile',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | shared-profile-profile-module */ "shared-profile-profile-module").then(__webpack_require__.bind(null, /*! ./shared/profile/profile.module */ "./src/app/shared/profile/profile.module.ts")).then(m => m.ProfilePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | shared-profile-profile-module */ "shared-profile-profile-module").then(__webpack_require__.bind(null, /*! ./shared/profile/profile.module */ "./src/app/shared/profile/profile.module.ts")).then(m => m.ProfilePageModule)
+            }
+        ]
+    },
+    { path: 'help', loadChildren: './shared/help/help.module#HelpPageModule' },
+    { path: 'change-password', loadChildren: './shared/change-password/change-password.module#ChangePasswordPageModule' },
+    {
+        path: 'admin-profile',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-admin-profile-admin-profile-module */ "admin-admin-profile-admin-profile-module").then(__webpack_require__.bind(null, /*! ./admin/admin-profile/admin-profile.module */ "./src/app/admin/admin-profile/admin-profile.module.ts")).then(m => m.AdminProfilePageModule)
+            },
+            {
+                path: ':id',
+                loadChildren: () => __webpack_require__.e(/*! import() | admin-admin-profile-admin-profile-module */ "admin-admin-profile-admin-profile-module").then(__webpack_require__.bind(null, /*! ./admin/admin-profile/admin-profile.module */ "./src/app/admin/admin-profile/admin-profile.module.ts")).then(m => m.AdminProfilePageModule)
+            }
+        ]
+    },
+    { path: 'edit-profile', loadChildren: './admin/edit-profile/edit-profile.module#EditProfilePageModule' },
+    { path: 'upload-image', loadChildren: './upload-image/upload-image.module#UploadImagePageModule' },
+    { path: 'donner-chat', loadChildren: './donner/donner-chat/donner-chat.module#DonnerChatPageModule' },
+    { path: 'admin-chat', loadChildren: './admin/admin-chat/admin-chat.module#AdminChatPageModule' },
+    {
+        path: 'charity-house-chat',
+        children: [
+            {
+                path: '',
+                loadChildren: () => __webpack_require__.e(/*! import() | charityHouse-charity-house-chat-charity-house-chat-module */ "charityHouse-charity-house-chat-charity-house-chat-module").then(__webpack_require__.bind(null, /*! ./charityHouse/charity-house-chat/charity-house-chat.module */ "./src/app/charityHouse/charity-house-chat/charity-house-chat.module.ts"))
+                    .then(m => m.CharityHouseChatPageModule)
+            },
+            {
+                path: ':donnerName',
+                loadChildren: () => __webpack_require__.e(/*! import() | charityHouse-charity-house-chat-charity-house-chat-module */ "charityHouse-charity-house-chat-charity-house-chat-module").then(__webpack_require__.bind(null, /*! ./charityHouse/charity-house-chat/charity-house-chat.module */ "./src/app/charityHouse/charity-house-chat/charity-house-chat.module.ts"))
+                    .then(m => m.CharityHouseChatPageModule)
+            }
+        ]
+    },
+    { path: 'chat-channels', loadChildren: './donner/chat-channels/chat-channels.module#ChatChannelsPageModule' },
+    { path: 'chat-list', loadChildren: './admin/chat-list/chat-list.module#ChatListPageModule' },
+    { path: 'open-admin-chat', loadChildren: './shared/open-admin-chat/open-admin-chat.module#OpenAdminChatPageModule' }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -705,12 +881,7 @@ let AppComponent = class AppComponent {
     ngOnInit() {
         this.service.currentMessage.subscribe(data => {
             console.log('role coming', data);
-            if (data === false) {
-                this.role = localStorage.getItem('role');
-                console.log('role', this.role);
-                this.loadUserAndPages(this.role);
-            }
-            else if (data) {
+            if (data) {
                 this.role = data;
                 this.role = this.role.role;
                 console.log('test', this.role);
@@ -720,24 +891,18 @@ let AppComponent = class AppComponent {
     }
     loadUserAndPages(role) {
         this.appPages = JSON.parse(localStorage.getItem('appPages'));
-        if (role === 'admin') {
-            this.user = JSON.parse(localStorage.getItem('adminUser'));
-            console.log('admin', this.user);
-        }
-        else if (role === 'donner') {
-            this.user = JSON.parse(localStorage.getItem('donner'));
-            console.log('donner', this.user);
-        }
-        else if (role === 'charity house') {
-            this.user = JSON.parse(localStorage.getItem('charity house'));
-            console.log('charity house', this.user);
-        }
+        this.user = JSON.parse(localStorage.getItem('user'));
+        console.log('user', this.user);
     }
     logOut() {
         alert('Are you sure to logout application.');
         localStorage.removeItem('role');
         localStorage.removeItem('appPages');
+        localStorage.removeItem('user');
         this.router.navigate(['']);
+    }
+    addProfilePicture() {
+        this.router.navigate(['profile-picture']);
     }
 };
 AppComponent.ctorParameters = () => [
@@ -786,6 +951,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 /* harmony import */ var ngx_autosize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-autosize */ "./node_modules/ngx-autosize/fesm2015/ngx-autosize.js");
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/es2015/index.js");
+/* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 
 
 
@@ -798,7 +966,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
+
+
+const firebaseConfig = {
+    apiKey: 'AIzaSyBmQgRPtxBmoCx7yspH4X877x2lFiBCOag',
+    authDomain: 'food-distribution-app-fb350.firebaseapp.com',
+    databaseURL: 'https://food-distribution-app-fb350.firebaseio.com',
+    projectId: 'food-distribution-app-fb350',
+    storageBucket: 'food-distribution-app-fb350.appspot.com',
+    messagingSenderId: '929354685211',
+    appId: '1:929354685211:web:3780621a28f01b84a1d1be',
+    measurementId: 'G-NKFBGSVN9C'
+};
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -812,11 +992,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["IonicStorageModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
             ngx_autosize__WEBPACK_IMPORTED_MODULE_11__["AutosizeModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_12__["AngularFireModule"].initializeApp(firebaseConfig),
+            _angular_fire_database__WEBPACK_IMPORTED_MODULE_13__["AngularFireDatabaseModule"]
         ],
         providers: [
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_14__["FCM"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-            // LocalNotifications,
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -845,12 +1026,6 @@ __webpack_require__.r(__webpack_exports__);
 
 let ListService = class ListService {
     constructor() {
-        this.surahList = [
-            { id: '001', name: 'fatiha' },
-            { id: '002', name: 'Baqarah' },
-            { id: '003', name: 'Imran' }
-        ];
-        this.doner = [];
         this.messageSource = new rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.currentMessage = this.messageSource.asObservable();
         // homeUrl = 'http://localhost:8095';
@@ -870,27 +1045,6 @@ let ListService = class ListService {
     }
     getUser() {
         return this.user;
-    }
-    //
-    // addDonner(item: any) {
-    //     this.doner.push(item);
-    // }
-    // getDonner() {
-    //     return this.doner;
-    // }
-    // addCharityHouse(item: any) {
-    //     this.charityHouse = item;
-    // }
-    //
-    // getCharityHouse() {
-    //     return this.charityHouse;
-    // }
-    getSUrahList() {
-        return this.surahList;
-    }
-    addSurah(surahForm) {
-        console.log('form data' + surahForm);
-        this.surahList.push(surahForm);
     }
 };
 ListService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

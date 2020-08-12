@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title>\n            Charity Houses\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-card class=\"welcome-card\" *ngFor=\"let item of result\">\n        <!--    <img src=\"/assets/quran-majeed.jpg\" alt=\"\" />-->\n        <ion-card-header>\n            <ion-card-title>{{item?.name}}</ion-card-title>\n            <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n            <p> {{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>\n            <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>\n            <p>there are {{item?.no_of_members}} members in house.</p>\n            <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds\n                in {{item?.account_no}} account Number.</p>\n            <ion-button size=\"small\" (click)=\"donateFood(item)\" slot=\"start\" color=\"success\">Donate Food\n            </ion-button>\n            <ion-button size=\"small\" (click)=\"donateFund(item)\" slot=\"end\" color=\"primary\">Donate Money</ion-button>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n        <ion-title>\n            Charity Houses\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-card class=\"welcome-card\" *ngFor=\"let item of result\">\n        <ion-card-header>\n            <ion-card-title>{{item?.name}}</ion-card-title>\n            <ion-card-subtitle>{{item?.contact}}</ion-card-subtitle>\n        </ion-card-header>\n        <ion-card-content>\n            <p>{{item?.name}} is {{item?.type}} in {{item?.address.streetAddress}} {{item?.address.city}}.</p>\n            <p>{{item?.contact}} is Contact number and email is {{item?.email}}.</p>\n            <p>there are {{item?.no_of_members}} members in house.</p>\n            <p>{{item?.name}} have an account in {{item?.bank_name}} Bank where you can donate your funds\n                in {{item?.account_no}} account Number.</p>\n            <ion-button size=\"small\" (click)=\"donateFood(item)\" slot=\"start\" color=\"success\">Donate Food\n            </ion-button>\n            <ion-button size=\"small\" (click)=\"donateFund(item)\" slot=\"end\" color=\"primary\">Donate Money</ion-button>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -122,25 +122,12 @@ let CharityListPage = class CharityListPage {
             console.log('error', error);
         });
         console.log('result' + this.result);
-        // this.data = this.http.get('http://localhost:8095/charityHouses/list');
-        // // this.loading = false;
-        // console.log('data', this.data);
-        // this.data.subscribe(data => {
-        //   this.result = data.content;
-        // });
-        // this.loading = false;
-        // console.log('result' + this.result);
     }
     loadData() {
         this.result = JSON.parse(localStorage.getItem('charityHouses'));
-        // this.storage.get('charityHouses').then((val) => {
-        //   console.log('Your charity houses list is', this.result);
-        // });
     }
     donateFund(item) {
         this.router.navigate(['donate-fund', item]);
-        // const url = `charityList/${item.id}`;
-        // this.router.navigateByUrl(url);
     }
     donateFood(item) {
         this.router.navigate(['donate-food', item]);

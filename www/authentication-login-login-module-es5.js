@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Login</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"loginForm\" >\n    <ion-grid>\n      <ion-row color=\"justify-content-center\">\n        <ion-col class=\"ion-align-self-center\" size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <div class=\"ion-text-center\">\n            <h3>Login to your account!</h3>\n          </div>\n          <div class=\"ion-padding\">\n            <ion-item>\n              <ion-input name=\"username\" formControlName=\"email\" type=\"text\" placeholder=\"Email\"></ion-input>\n            </ion-item>\n            <span class=\"error-message\" *ngIf=\"isSubmitted && errorControl.email.errors?.required\">email is required.</span>\n            <ion-item>\n              <ion-input placeholder=\"Password\" formControlName=\"password\" [type]=\"passwordType\" clearOnEdit=\"false\"></ion-input>\n              <ion-icon item-end [name]=\"passwordIcon\" class=\"passwordIcon\" (click)='hideShowPassword()'></ion-icon>\n            </ion-item>\n            <span class=\"error-message\" *ngIf=\"isSubmitted && errorControl.password.errors?.required\">Password is required.</span>\n            <ion-item>\n              <ion-label position=\"floating\">User Role</ion-label>\n              <ion-select value=\"Donner\" formControlName=\"role\" placeholder=\"--Select--\" okText=\"Okay\" cancelText=\"Dismiss\">\n                <ion-select-option value=\"admin\">Admin</ion-select-option>\n                <ion-select-option value=\"donner\">Donner</ion-select-option>\n                <ion-select-option value=\"charity house\">Charity House</ion-select-option>\n              </ion-select>\n            </ion-item>\n              <span class=\"error ion-padding\" *ngIf=\"isSubmitted && errorControl.role.errors?.required\">Please select user role.</span>\n          </div>\n          <div class=\"ion-padding\">\n            <ion-button shape=\"round\" size=\"large\" (click)=\"login()\" color=\"primary\" type=\"submit\" expand=\"block\">Login</ion-button>\n          </div>\n          <div>\n            <ion-label *ngIf=\"test\">Invalid email OR password. Please Enter correct details.</ion-label>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n  <ion-text (click)=\"forgotPassword()\" color=\"danger\">\n    <h4 style=\"padding-left: 30px\">Forgot Password?</h4>\n  </ion-text>\n  <ion-label>\n  </ion-label>\n  <ion-footer style=\"padding-top: 40px\">\n    <ion-button (click)=\"registerUser()\" size=\"large\" expand=\"block\" color=\"secondary\">\n      <ion-img class=\"register-icon\" src=\"/assets/person-add-sharp.svg\"></ion-img>\n      REGISTER A NEW USER</ion-button>\n  </ion-footer>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Login</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"loginForm\" >\n    <ion-grid>\n      <ion-row color=\"justify-content-center\">\n        <ion-col class=\"ion-align-self-center\" size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <div class=\"ion-text-center\">\n            <h3>Login to your account!</h3>\n          </div>\n          <div class=\"ion-padding\">\n            <ion-item>\n              <ion-input formControlName=\"email\" type=\"text\" placeholder=\"Email\"></ion-input>\n            </ion-item>\n            <span class=\"error-message\" *ngIf=\"isSubmitted && errorControl.email.errors?.required\">email is required.</span>\n            <ion-item>\n              <ion-input placeholder=\"Password\" formControlName=\"password\" [type]=\"passwordType\" clearOnEdit=\"false\"></ion-input>\n              <ion-icon item-end [name]=\"passwordIcon\" class=\"passwordIcon\" (click)='hideShowPassword()'></ion-icon>\n            </ion-item>\n            <span class=\"error-message\" *ngIf=\"isSubmitted && errorControl.password.errors?.required\">Password is required.</span>\n          </div>\n          <div class=\"ion-padding\">\n            <ion-button shape=\"round\" size=\"large\" (click)=\"login()\" color=\"primary\" type=\"submit\" expand=\"block\">Login</ion-button>\n          </div>\n          <div>\n            <ion-label *ngIf=\"test\">Invalid email OR password. Please Enter correct details.</ion-label>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n  <ion-text (click)=\"forgotPassword()\" color=\"danger\">\n    <h4 style=\"padding-left: 30px\">Forgot Password?</h4>\n  </ion-text>\n  <ion-label>\n  </ion-label>\n  <ion-footer style=\"padding-top: 40px\">\n    <ion-button (click)=\"registerUser()\" size=\"large\" expand=\"block\" color=\"secondary\">\n      <ion-img class=\"register-icon\" src=\"/assets/person-add-sharp.svg\"></ion-img>\n      REGISTER A NEW USER</ion-button>\n  </ion-footer>\n</ion-content>\n"
 
 /***/ }),
 
@@ -119,61 +119,61 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.formInitializer = function () {
         this.loginForm = this.formBuilder.group({
             email: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
-            password: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
-            role: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
+            password: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
         });
     };
     LoginPage.prototype.login = function () {
         var _this = this;
         this.isSubmitted = true;
         if (this.loginForm.valid) {
-            var loginData_1 = this.loginForm.value;
-            this.saveHttpReq(loginData_1).subscribe(function (d) {
+            var loginData = this.loginForm.value;
+            this.saveHttpReq(loginData).subscribe(function (d) {
                 console.log('I got this response -> ', d);
                 console.log('data.emailStatus', d.emailStatus);
                 console.log('response', d);
                 if (d.emailStatus && d.loginStatus && d.applicationStatus === 'approved' && d.role != null) {
                     if (d.role === 'donner') {
                         _this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
-                            { title: 'charity Houses', url: '/charityList', icon: 'list', },
-                            { title: 'Setting', url: '/setting', icon: 'settings' }];
-                        _this.service.setRole(loginData_1.role);
+                            { title: 'charity Houses', url: '/charityList', icon: 'list' },
+                            { title: 'Open Chat', url: '/chat-channels', icon: 'ios-chatboxes' },
+                            { title: 'Reports', url: "/reports/" + d.donner.id, icon: 'list' },
+                            { title: 'Settings', url: '/setting', icon: 'settings' },
+                            { title: 'Feedbacks', url: '/feed-backs', icon: 'list' }];
+                        _this.service.setRole(d.role);
                         console.log('donner coming from API', d.donner);
-                        localStorage.setItem('donner', JSON.stringify(d.donner));
+                        localStorage.setItem('user', JSON.stringify(d.donner));
                         localStorage.setItem('appPages', JSON.stringify(_this.appPages));
-                        localStorage.setItem('role', loginData_1.role); // store role in local storage
-                        _this.service.changeMessage({ role: loginData_1.role });
+                        localStorage.setItem('role', d.role); // store role in local storage
+                        _this.service.changeMessage({ role: d.role });
                         _this.router.navigate(['home']);
                     }
                     if (d.role === 'charity house') {
                         _this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
                             { title: 'Donner List', url: '/donner-list', icon: 'list', },
-                            { title: 'Setting', url: '/setting', icon: 'settings' }];
-                        _this.service.setRole(loginData_1.role);
+                            { title: 'Setting', url: '/setting', icon: 'settings' },
+                        ];
+                        _this.service.setRole(d.role);
                         localStorage.setItem('appPages', JSON.stringify(_this.appPages));
-                        localStorage.setItem('charity house', JSON.stringify(d.charityHouse));
-                        localStorage.setItem('role', loginData_1.role); // store role in local storage
-                        _this.service.changeMessage({ role: loginData_1.role });
+                        localStorage.setItem('user', JSON.stringify(d.charityHouse));
+                        localStorage.setItem('role', d.role); // store role in local storage
+                        _this.service.changeMessage({ role: d.role });
                         _this.router.navigate(['home']);
                     }
                     if (d.role === 'admin') {
                         _this.appPages = [{ title: 'Home', url: '/home', icon: 'home' },
-                            { title: 'Users', url: '/list', icon: 'list', },
-                            { title: 'Setting', url: '/setting', icon: 'settings' }];
-                        _this.service.setRole(loginData_1.role);
-                        localStorage.setItem('adminUser', JSON.stringify(d.user));
+                            { title: 'Manage Users', url: '/tabs', icon: 'list', },
+                            { title: 'Message', url: '/chat-list', icon: 'ios-chatboxes' },
+                            { title: 'Profile', url: "/admin-profile/" + d.user.id, icon: 'person' }];
+                        console.log('user', d.role);
+                        _this.service.setRole(d.role);
+                        localStorage.setItem('user', JSON.stringify(d.user));
                         localStorage.setItem('appPages', JSON.stringify(_this.appPages));
-                        localStorage.setItem('role', loginData_1.role); // store role in local storage
-                        _this.service.changeMessage({ role: loginData_1.role });
+                        localStorage.setItem('role', d.role); // store role in local storage
+                        _this.service.changeMessage({ role: d.role });
                         _this.router.navigate(['home']);
                     }
-                    // this.service.addUser(d.userID);
-                    // this.router.navigate(['home']);
                 }
-                else if (d.emailStatus && d.loginStatus && d.applicationStatus === 'approved' && d.role === null) {
-                    alert('Please select correct role.');
-                }
-                else if (d.emailStatus && d.loginStatus && d.applicationStatus === null && d.role === loginData_1.role) {
+                else if (d.emailStatus && d.loginStatus && d.applicationStatus === null) {
                     alert('Your email and password is correct but Application status is disapproved. ' +
                         'Now you hve to check confirmation Email and approve your application status. Thank you!');
                 }
@@ -185,7 +185,7 @@ var LoginPage = /** @class */ (function () {
                 }
                 // this.router.navigate(['home']);
             }, function (error) {
-                alert(':( OOPS ! Server Error.');
+                alert(':( OOPS ! Server Error. Confirm your internet connection.');
                 console.log('error', error);
             });
             // if (loginData.role === 'donner') {

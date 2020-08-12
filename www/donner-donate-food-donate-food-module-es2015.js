@@ -133,7 +133,7 @@ let DonateFoodPage = class DonateFoodPage {
         console.log('form data', test);
         // This id will comes from the service, because when user will login, his ID will save to service
         // and retrieved at time of send data to server.
-        const donner = JSON.parse(localStorage.getItem('donner'));
+        const donner = JSON.parse(localStorage.getItem('user'));
         const donnerID = donner.id;
         console.log('donner id ', donnerID);
         this.finalDonationObject = '{"quantityValue" : "' + test.quantity + '",' +
@@ -167,6 +167,7 @@ let DonateFoodPage = class DonateFoodPage {
         console.log('data recieved for put. ', dataObj);
         const url = `${this.service.homeUrl}/foodDonationDetails/newFoodDonationDetails`;
         return this.http.post(url, dataObj);
+        alert('Notification sent. Please! wait while charity house connect with you. Thanks for donating fund.');
     }
 };
 DonateFoodPage.ctorParameters = () => [

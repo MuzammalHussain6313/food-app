@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n      <!-- <ion-menu-button></ion-menu-button> -->\r\n    </ion-buttons>\r\n    <ion-title>Update</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid class=\"ion-padding-top\">\r\n    <ion-text>Update field</ion-text>\r\n    <div [formGroup]=\"signupForm\">\r\n      <ion-item>\r\n        <ion-label position=\"floating\">ID</ion-label>\r\n        <ion-input formControlName=\"id\"></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n\r\n        <ion-label position=\"floating\">First Name</ion-label>\r\n        <ion-input formControlName=\"first_name\"></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n\r\n      <ion-label position=\"floating\">Last Name</ion-label>\r\n      <ion-input formControlName=\"last_name\" ></ion-input>\r\n    </ion-item>\r\n\r\n      <ion-item>\r\n        <ion-label position=\"floating\">email</ion-label>\r\n        <ion-input formControlName=\"email\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">User Name</ion-label>\r\n        <ion-input formControlName=\"user_name\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Password</ion-label>\r\n        <ion-input formControlName=\"password\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label position=\"floating\">Role</ion-label>\r\n        <ion-input formControlName=\"password\" ></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-grid class=\"ion-padding-top\">\r\n        <ion-row class=\"ion-justify-content-center\">\r\n\r\n          <ion-button (click)=\"updateData()\" shape=\"square\" [disabled]=\"!signupForm.valid\">Save</ion-button>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </div>\r\n  </ion-grid>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Update</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid class=\"ion-padding-top\">\r\n    <div [formGroup]=\"signupForm\">\r\n      <ion-input [hidden]=\"true\" value=\"{{user?.id}}\" formControlName=\"id\"></ion-input>\r\n      <ion-item>\r\n        <ion-input placeholder=\"First Name\" value=\"{{user?.user?.first_name}}\" formControlName=\"first_name\"></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n      <ion-input placeholder=\"Last Name\" value=\"{{user?.user?.last_name}}\" formControlName=\"last_name\" ></ion-input>\r\n    </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Email\" value=\"{{user?.user?.email}}\" formControlName=\"email\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"User Name\" value=\"{{user?.user?.user_name}}\" formControlName=\"user_name\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Password\" value=\"{{user?.user?.password}}\" formControlName=\"password\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Role\" value=\"{{user?.user?.role}}\" formControlName=\"role\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Address\" value=\"{{user?.address}}\" formControlName=\"address\" ></ion-input>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-input placeholder=\"Contact\" value=\"{{user?.contact}}\" formControlName=\"contact\" ></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-grid class=\"ion-padding-top\">\r\n        <ion-row class=\"ion-justify-content-center\">\r\n\r\n          <ion-button (click)=\"updateData()\" shape=\"square\" [disabled]=\"!signupForm.valid\">Save</ion-button>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </div>\r\n  </ion-grid>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -52,6 +52,9 @@ var UpdatePageModule = /** @class */ (function () {
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]
+            ],
+            exports: [
+                _update_page__WEBPACK_IMPORTED_MODULE_6__["UpdatePage"]
             ],
             declarations: [_update_page__WEBPACK_IMPORTED_MODULE_6__["UpdatePage"]]
         })
@@ -106,21 +109,20 @@ var UpdatePage = /** @class */ (function () {
     }
     UpdatePage.prototype.ngOnInit = function () {
         var _this = this;
-        this.formInitializer();
         this.route.paramMap.subscribe(function (paramMap) {
             var val = paramMap.get('id');
             console.log('id', val);
-            var url = _this.service.homeUrl + "/users/getUser/" + val;
+            var url = _this.service.homeUrl + "/donners/findById/" + val;
             console.log('url', url);
             _this.data = _this.http.get(url);
-            console.log(_this.data);
+            console.log('data', _this.data);
             _this.data.subscribe(function (data) {
                 _this.user = data;
-                _this.signupForm.patchValue(_this.user);
-                console.log(_this.user);
+                console.log('user', _this.user);
             });
             console.log(_this.user);
         });
+        this.formInitializer();
     };
     UpdatePage.prototype.formInitializer = function () {
         console.log('formInitializer', this.user);
@@ -132,23 +134,45 @@ var UpdatePage = /** @class */ (function () {
             user_name: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
             password: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
             role: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            address: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]],
+            contact: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]]
         });
+    };
+    UpdatePage.prototype.generateUser = function () {
+        var data = this.signupForm.value;
+        this.childUser = '"user" : {"id" : "' + this.user.user.id +
+            '" , \n"first_name" : "' + data.first_name +
+            '" , \n"last_name" : "' + data.last_name +
+            '" , \n"email" : "' + data.email +
+            '" , \n"user_name" : "' + data.user_name +
+            '" , \n"password" : "' + data.password +
+            '" , \n"role"  : "' + data.role + '"}';
+        this.donner = '{"id" : "' + data.id +
+            '", \n"address" : "' + data.address +
+            '", \n"contact" : "' + data.contact +
+            '", \n' + this.childUser + ' }';
+        console.log('data before parsing', this.donner);
+        var completeDonner = JSON.parse(this.donner);
+        console.log('complete Donner', completeDonner);
+        return completeDonner;
     };
     UpdatePage.prototype.updateData = function () {
         var _this = this;
         if (this.signupForm.valid) {
             console.log('formData', this.signupForm.value);
             var formData = this.signupForm.value;
-            this.saveHttpReq(formData).subscribe(function (data) {
+            console.log('data', this.generateUser());
+            this.saveHttpReq(this.generateUser()).subscribe(function (data) {
                 console.log('I got this response -> ', data);
-                _this.router.navigate(['list']);
+                _this.router.navigate(['tabs/donners']);
+                alert('user updated successfully');
             }, function (error) {
                 console.log('error', error);
             });
         }
     };
     UpdatePage.prototype.saveHttpReq = function (dataObj) {
-        var url = this.service.homeUrl + "/users/updateUser";
+        var url = this.service.homeUrl + "/donners/updateDonner";
         console.log('link', url);
         return this.http.put(url, dataObj);
     };

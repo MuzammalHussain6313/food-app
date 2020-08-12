@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>667628560401-ep124aoqeo4a0du35ri9l25nrtf4qa69.apps.googleusercontent.com</string>
+	<string>929354685211-3c9nf2nq57h2ustljshtu3de6h1evl19.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.667628560401-ep124aoqeo4a0du35ri9l25nrtf4qa69</string>
+	<string>com.googleusercontent.apps.929354685211-3c9nf2nq57h2ustljshtu3de6h1evl19</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAS1bZtfzPeuUaWRJBd3u05HkgxlvGzKQ0</string>
+	<string>AIzaSyAcKehnMAGuZQgpMJC0cAp5xKve4uvgcnU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>667628560401</string>
+	<string>929354685211</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.project.fyp</string>
+	<string>io.ionic.starter</string>
 	<key>PROJECT_ID</key>
-	<string>ionic-5-notification</string>
+	<string>food-distribution-app-fb350</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ionic-5-notification.appspot.com</string>
+	<string>food-distribution-app-fb350.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:667628560401:ios:890cea814c8aaf1c8591b0</string>
+	<string>1:929354685211:ios:86de75ae7a0c0d92a1d1be</string>
 	<key>DATABASE_URL</key>
-	<string>https://ionic-5-notification.firebaseio.com</string>
+	<string>https://food-distribution-app-fb350.firebaseio.com</string>
 </dict>
 </plist>

@@ -120,7 +120,7 @@ let FeedbackPage = class FeedbackPage {
     }
     sendFeedback() {
         const test = this.feedbackForm.value;
-        const charityHouse = JSON.parse(localStorage.getItem('charity house'));
+        const charityHouse = JSON.parse(localStorage.getItem('user'));
         const charityID = charityHouse.id;
         console.log('charity id ', charityID);
         this.finalFeedbackObject = '{"email": "' + test.email + '",' +
@@ -140,8 +140,9 @@ let FeedbackPage = class FeedbackPage {
     saveFeedback(dataObj) {
         console.log('data recieved for put. ', dataObj);
         const url = `${this.service.homeUrl}/feedbacks/newFeedback`;
-        this.presentAlertConfirm();
+        // this.presentAlertConfirm();
         return this.http.post(url, dataObj);
+        alert('Feedback is recorded. Thanks you for sending feedback.');
     }
     presentAlertConfirm() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {

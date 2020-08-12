@@ -40,7 +40,7 @@ export class AdminChatPage implements OnInit {
     this.username = JSON.parse(localStorage.getItem('chatUsername'));
     this.channel = this.username + '-admin';
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.currentUser = this.user.first_name.toLowerCase() + ' ' + this.user.last_name.toLowerCase();
+    this.currentUser = this.user.user_name.toLowerCase(); // + ' ' + this.user.last_name.toLowerCase();
     console.log('current user', this.currentUser);
   }
   sendMessage() {

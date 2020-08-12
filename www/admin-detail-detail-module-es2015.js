@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"list\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card class=\"welcome-card\">\r\n<!--    <img src=\"/assets/quran-majeed.jpg\" alt=\"\" />-->\r\n    <ion-card-header>\r\n        <ion-card-title>{{user?.first_name}}</ion-card-title>\r\n        <ion-card-subtitle>{{user?.last_name}}</ion-card-subtitle>\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n      <p> Mr. {{user?.first_name}} {{user?.last_name}} is a {{user?.role}} User of this system.</p>\r\n      <p>Username of the user is {{user?.user_name}} and password is {{user?.password}} and email is {{user?.email}}.</p>\r\n        <ion-icon size=\"large\" slot=\"end\" name=\"ios-call\" (click)=\"contactDealer(user?.email)\"></ion-icon>\r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"secondary\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n      <ion-title>Details</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card class=\"welcome-card\">\r\n    <ion-card-header>\r\n        <ion-card-title>{{user?.user?.first_name}}</ion-card-title>\r\n        <ion-card-subtitle>{{user?.user?.last_name}}</ion-card-subtitle>\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n      <p> Mr. {{user?.user?.first_name}} {{user?.user?.last_name}} is a {{user?.user?.role}} User of this system. His\r\n      Contact number is {{user?.contact}} and address is {{user?.address}}</p>\r\n      <p>Username of the user is {{user?.user?.user_name}} and password is {{user?.user?.password}} and email is {{user?.user?.email}}.</p>\r\n        <ion-item lines=\"none\">\r\n            <ion-button style=\"height: 40px\" (click)=\"loadReports(user.id)\" slot=\"start\">View Reports</ion-button>\r\n            <ion-img (click)=\"contactDonner(user?.user?.email)\" style=\"width: 50px; height: 50px;\" src=\"/assets/phone-icon.svg\" alt=\"update\" slot=\"end\"></ion-img>\r\n        </ion-item>\r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -101,7 +101,7 @@ let DetailPage = class DetailPage {
     ngOnInit() {
         this.route.paramMap.subscribe(paramMap => {
             const val = paramMap.get('id');
-            const url = `${this.service.homeUrl}/users/getUser/${val}`;
+            const url = `${this.service.homeUrl}/donners/findById/${val}`;
             this.data = this.http.get(url);
             console.log(this.data);
             this.data.subscribe(data => {
@@ -111,29 +111,12 @@ let DetailPage = class DetailPage {
             console.log(this.user);
         });
     }
-    deleteStudent() {
-        console.log('formData ' + this.user.id);
-        this.callAPI(this.user).subscribe(data => {
-            console.log('I got this response -> ', data);
-            this.router.navigate(['list']);
-        }, error => {
-            console.log('error', error);
-        });
-        this.router.navigate(['list']);
+    contactDonner(contactNumber) {
+        alert('You can contact with owner via ' + contactNumber + ' Number.');
     }
-    callAPI(student) {
-        const url = `${this.service.homeUrl}/users/deleteUser/${this.user.id}`;
-        console.log('link', url);
-        return this.http.delete(url);
-    }
-    updateItem() {
-        const id = this.user.id;
-        const url = `update/${id}`;
-        console.log(url);
+    loadReports(id) {
+        const url = `reports/${id}`;
         this.router.navigateByUrl(url);
-    }
-    contactDealer(contactNumber) {
-        alert('You can contactwith owner via ' + contactNumber + ' Number.');
     }
 };
 DetailPage.ctorParameters = () => [

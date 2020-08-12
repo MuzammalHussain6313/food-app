@@ -10,8 +10,13 @@
     <param name="android-package" value="org.apache.cordova.device.Device"/>
   </feature>
 
-  <feature name="LocalNotification">
-    <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification"/>
+  <feature name="FCMPlugin">
+    <param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin"/>
+    <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="CordovaStripe">
+    <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe"/>
   </feature>
 
   <feature name="SQLitePlugin">
@@ -19,12 +24,4 @@
   </feature>
 
   
-  <preference name="ScrollEnabled" value="false" />
-  <preference name="android-minSdkVersion" value="19" />
-  <preference name="BackupWebStorage" value="none" />
-  <preference name="SplashMaintainAspectRatio" value="true" />
-  <preference name="FadeSplashScreenDuration" value="300" />
-  <preference name="SplashShowOnlyFirstTime" value="false" />
-  <preference name="SplashScreen" value="screen" />
-  <preference name="SplashScreenDelay" value="3000" />
 </widget>

@@ -42,7 +42,7 @@ export class DonnerChatPage implements OnInit {
   loadchannelName() {
     this.channel = JSON.parse(localStorage.getItem('channelName'));
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
+    this.currentUser = this.user.user.user_name.toLowerCase(); // + ' ' + this.user.user.last_name.toLowerCase();
     console.log('current user', this.currentUser);
   }
   sendMessage() {

@@ -75,7 +75,8 @@ export class CharityHouseChatPage implements OnInit {
     loadchannelName() {
         const donner = JSON.parse(localStorage.getItem('donnerName'));
         this.user = JSON.parse(localStorage.getItem('user'));
-        this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
+        // this.currentUser = this.user.user.first_name.toLowerCase() + ' ' + this.user.user.last_name.toLowerCase();
+        this.currentUser = this.user.user.user_name.toLowerCase(); // + ' ' + this.user.user.last_name.toLowerCase();
         this.channel = donner + '-' + this.user.user.first_name.toLowerCase() + '-' + this.user.user.last_name.toLowerCase();
         console.log('current user', this.currentUser);
         console.log('channel', this.channel);

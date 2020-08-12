@@ -125,7 +125,7 @@ var FeedbackPage = /** @class */ (function () {
     FeedbackPage.prototype.sendFeedback = function () {
         var _this = this;
         var test = this.feedbackForm.value;
-        var charityHouse = JSON.parse(localStorage.getItem('charity house'));
+        var charityHouse = JSON.parse(localStorage.getItem('user'));
         var charityID = charityHouse.id;
         console.log('charity id ', charityID);
         this.finalFeedbackObject = '{"email": "' + test.email + '",' +
@@ -145,8 +145,9 @@ var FeedbackPage = /** @class */ (function () {
     FeedbackPage.prototype.saveFeedback = function (dataObj) {
         console.log('data recieved for put. ', dataObj);
         var url = this.service.homeUrl + "/feedbacks/newFeedback";
-        this.presentAlertConfirm();
+        // this.presentAlertConfirm();
         return this.http.post(url, dataObj);
+        alert('Feedback is recorded. Thanks you for sending feedback.');
     };
     FeedbackPage.prototype.presentAlertConfirm = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
