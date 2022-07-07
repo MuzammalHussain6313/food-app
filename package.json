@@ -41,7 +41,7 @@
     "ionic-angular": "latest",
     "ionic2-rating": "^1.2.2",
     "ionic3-star-rating": "^2.1.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-autosize": "^1.7.5",
     "phonegap-plugin-multidex": "^1.0.0",
     "rxjs": "^6.5.3",
